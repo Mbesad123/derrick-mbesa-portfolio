@@ -275,6 +275,146 @@
             margin: 0;
         }
         
+        /* Portfolio Filters */
+        .portfolio-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: white;
+            color: #6b7280;
+            padding: 10px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: #1e6f5c;
+            color: #1e6f5c;
+        }
+        
+        .filter-btn.active {
+            background: #1e6f5c;
+            color: white;
+            border-color: #1e6f5c;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 28px;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+        }
+        
+        .project-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-icon {
+            font-size: 4rem;
+        }
+        
+        .project-content {
+            padding: 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #1e6f5c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .portfolio-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .project-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .project-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e6f5c;
+            margin-bottom: 4px;
+        }
+        
+        .metric-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tool-tag {
+            background: #e0f2f1;
+            color: #0f5a49;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
         /* Services Grid */
         .services-grid {
             display: grid;
@@ -582,6 +722,9 @@
             .about-grid { grid-template-columns: 1fr; }
             .contact-content { grid-template-columns: 1fr; gap: 40px; }
             .section { padding: 60px 0; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-filters { justify-content: flex-start; }
+            .project-metrics { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -593,6 +736,7 @@
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
                 <a href="#credentials">Credentials</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#contact" class="btn-nav">Contact</a>
@@ -703,6 +847,184 @@
         </div>
     </div>
 
+    <div class="container section" id="portfolio">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Work & Case Studies</h2>
+        <p class="section-desc">Real-world applications demonstrating measurable impact in healthcare operations and administration</p>
+        
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="medical-coding">Medical Coding</button>
+            <button class="filter-btn" data-filter="ehr">EHR Management</button>
+            <button class="filter-btn" data-filter="administration">Administration</button>
+            <button class="filter-btn" data-filter="optimization">Process Optimization</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="portfolio-card" data-category="medical-coding">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <span class="project-icon">💰</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">Medical Coding</div>
+                    <h3>Medical Billing & Revenue Cycle</h3>
+                    <p class="project-description">Managed end-to-end medical coding and billing for multi-provider practice. Achieved 95%+ first-pass approval rates through meticulous ICD-10 and CPT coding.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%+</span>
+                            <span class="metric-label">First-Pass Approval</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">30%</span>
+                            <span class="metric-label">Denial Reduction</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">ICD-10</span>
+                        <span class="tool-tag">CPT Coding</span>
+                        <span class="tool-tag">Epic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="portfolio-card" data-category="ehr">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="project-icon">📊</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">EHR Management</div>
+                    <h3>EHR Optimization & Data Integrity</h3>
+                    <p class="project-description">Conducted comprehensive EHR audit and optimization. Improved data accuracy and clinical documentation standards across the practice.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">99%</span>
+                            <span class="metric-label">Data Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">40%</span>
+                            <span class="metric-label">Documentation Time Saved</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Epic</span>
+                        <span class="tool-tag">SOAP Notes</span>
+                        <span class="tool-tag">Auditing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="portfolio-card" data-category="administration">
+                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <span class="project-icon">📅</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">Administration</div>
+                    <h3>Appointment Scheduling & Patient Coordination</h3>
+                    <p class="project-description">Redesigned appointment scheduling system with color-coded visit tracking. Eliminated double-bookings and reduced no-show rates significantly.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">0</span>
+                            <span class="metric-label">Double Bookings</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">35%</span>
+                            <span class="metric-label">No-Show Rate Reduction</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Calendar Management</span>
+                        <span class="tool-tag">Patient Coordination</span>
+                        <span class="tool-tag">Google Calendar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="portfolio-card" data-category="optimization">
+                <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <span class="project-icon">⚙️</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">Process Optimization</div>
+                    <h3>Insurance Verification & Prior Auth Workflow</h3>
+                    <p class="project-description">Streamlined insurance verification and prior authorization process. Implemented proactive tracking system reducing claim denials and patient delays.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">85%</span>
+                            <span class="metric-label">Pre-Verification Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">2-3 days</span>
+                            <span class="metric-label">Avg Auth Turnaround</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Insurance Verification</span>
+                        <span class="tool-tag">Prior Authorization</span>
+                        <span class="tool-tag">Spreadsheets</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-card" data-category="administration">
+                <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <span class="project-icon">🤝</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">Administration</div>
+                    <h3>Telehealth Program Implementation</h3>
+                    <p class="project-description">Designed and implemented telehealth infrastructure including scheduling, technical setup, and patient support. Enabled seamless virtual consultations.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">98%</span>
+                            <span class="metric-label">Session Success Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">25+</span>
+                            <span class="metric-label">Weekly Sessions</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">Doxy.me</span>
+                        <span class="tool-tag">Zoom</span>
+                        <span class="tool-tag">Schedule Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="portfolio-card" data-category="ehr">
+                <div class="project-image" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                    <span class="project-icon">📝</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">EHR Management</div>
+                    <h3>Medical Scribing & Clinical Documentation</h3>
+                    <p class="project-description">Provided real-time medical scribing for clinical encounters. Converted provider-patient dialogues into structured, compliant SOAP notes.</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Accuracy Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-label">Notes/Month</span>
+                        </div>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-tag">SOAP Notes</span>
+                        <span class="tool-tag">Clinical Documentation</span>
+                        <span class="tool-tag">Medical Terminology</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container section" id="credentials">
         <div class="section-label">Education & Credentials</div>
         <h2 class="section-title">Credentials & Expertise</h2>
@@ -777,7 +1099,7 @@
                     <p>Contact me today to discuss how my tailored services can support your clinical goals and give you back your peace of mind.</p>
                     <div class="contact-email">
                         <span>📧</span>
-                        <a href="mailto:mbesad6@gmail.com">mbesad6@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#0568676076646133456268646c692b666a68"><span class="__cf_email__" data-cfemail="e38e8186908287d5a3848e828a8fcd808c8e">[email&#160;protected]</span></a>
                     </div>
                     <div class="contact-benefits">
                         <div class="benefit">✓ HIPAA Compliant Operations</div>
@@ -821,7 +1143,27 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Portfolio Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.portfolio-card').forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 0);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             const formMessage = document.getElementById('formMessage');
             
@@ -841,12 +1183,4 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                const target =
