@@ -5,55 +5,584 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Derrick Mbesa - Medical Virtual Assistant</title>
     <style>
-        /* [All the CSS from above - same as original] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.5; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .logo { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #0f2b3d, #1e6f5c); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #334155; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: #1e6f5c; }
-        .btn-outline { border: 1px solid #1e6f5c; background: transparent; padding: 8px 20px; border-radius: 30px; color: #1e6f5c; font-weight: 600; transition: all 0.2s; }
-        .btn-outline:hover { background: #1e6f5c; color: white; }
-        .btn-primary { display: inline-block; background: #1e6f5c; color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 600; transition: background 0.2s; border: none; cursor: pointer; }
-        .btn-primary:hover { background: #0f5a49; }
-        .btn-secondary { display: inline-block; background: transparent; border: 1px solid #1e6f5c; color: #1e6f5c; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
-        .btn-secondary:hover { background: #1e6f5c; color: white; }
-        .hero { padding: 60px 0 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; }
-        .hero-content { flex: 1; }
-        .hero-badge { background: #e2f0ee; color: #1e6f5c; display: inline-block; padding: 6px 14px; border-radius: 30px; font-size: 0.875rem; font-weight: 500; margin-bottom: 24px; }
-        .hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.02em; }
-        .hero-highlight { background: linear-gradient(135deg, #0f2b3d, #1e6f5c); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero p { font-size: 1.125rem; color: #334155; margin-bottom: 32px; max-width: 500px; }
-        .stats { display: flex; gap: 32px; margin-top: 32px; }
-        .stat-item h3 { font-size: 1.8rem; color: #1e6f5c; }
-        .stat-item p { font-size: 0.875rem; color: #475569; margin: 0; }
-        .hero-image { flex: 1; background: linear-gradient(135deg, #d9e6e3, #ffffff); border-radius: 32px; padding: 40px; text-align: center; min-height: 280px; display: flex; align-items: center; justify-content: center; }
-        .avatar-placeholder { background: #1e6f5c20; width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: #1e6f5c; }
-        .about { padding: 80px 0; background: white; border-radius: 48px; margin: 40px 0; }
-        .section-title { font-size: 2rem; margin-bottom: 16px; text-align: center; }
-        .section-subtitle { text-align: center; color: #475569; margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .about-grid { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
-        .about-text { flex: 2; }
-        .about-stats { flex: 1; display: flex; flex-direction: column; gap: 24px; }
-        .stat-card { background: #f1f5f9; padding: 20px; border-radius: 24px; text-align: center; }
-        .services { padding: 60px 0; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; margin-top: 48px; }
-        .service-card { background: white; padding: 28px; border-radius: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s; }
-        .service-card:hover { transform: translateY(-4px); }
-        .service-icon { font-size: 2rem; margin-bottom: 20px; }
-        .service-card h3 { margin-bottom: 12px; }
-        .testimonials { background: #f1f5f9; padding: 80px 0; border-radius: 48px; margin: 40px 0; }
-        .testimonial-card { background: white; padding: 32px; border-radius: 28px; max-width: 700px; margin: 0 auto; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
-        .education-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin: 48px 0; }
-        .edu-card { background: white; padding: 24px; border-radius: 24px; flex: 1; min-width: 220px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .tools { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 32px 0; }
-        .tool-badge { background: #e2e8f0; padding: 8px 18px; border-radius: 40px; font-size: 0.875rem; }
-        .cta { background: #0f2b3d; color: white; padding: 60px; border-radius: 48px; text-align: center; margin: 60px 0; }
-        .cta-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
-        .footer { text-align: center; padding: 40px 0; border-top: 1px solid #e2e8f0; margin-top: 40px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .container { padding: 0 20px; } nav { flex-direction: column; } .hero { flex-direction: column; } }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            background: rgba(249, 250, 251, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #1e6f5c;
+        }
+        
+        .btn-nav {
+            background: #1e6f5c;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .btn-nav:hover {
+            background: #0f5a49;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #0f2b3d;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .hero-highlight {
+            background: linear-gradient(135deg, #1e6f5c 0%, #0f5a49 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            max-width: 520px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: #1e6f5c;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(30, 111, 92, 0.15);
+        }
+        
+        .btn-primary:hover {
+            background: #0f5a49;
+            box-shadow: 0 8px 20px rgba(30, 111, 92, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1e6f5c;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid #1e6f5c;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: #f0f9f7;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 450px;
+        }
+        
+        .stat {
+            padding: 16px;
+            background: #f3f4f6;
+            border-radius: 12px;
+        }
+        
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: #1e6f5c;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .hero-image {
+            background: linear-gradient(135deg, #e0f2f1 0%, #f0f9f7 100%);
+            border-radius: 16px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        .avatar {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #1e6f5c 0%, #0f5a49 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+        
+        /* Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #1e6f5c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f2b3d;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .section-desc {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+        
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .about-text p {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .about-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 4px solid #1e6f5c;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        
+        .stat-box h4 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e6f5c;
+            margin-bottom: 4px;
+        }
+        
+        .stat-box p {
+            color: #6b7280;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border-top: 4px solid #1e6f5c;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            margin-bottom: 12px;
+        }
+        
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        /* Credentials */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        
+        .credential-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid #1e6f5c;
+        }
+        
+        .credential-year {
+            font-size: 0.875rem;
+            color: #1e6f5c;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .credential-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            margin-bottom: 6px;
+        }
+        
+        .credential-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Tools */
+        .tools-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+        }
+        
+        .tools-section h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            margin-bottom: 24px;
+        }
+        
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .tool-badge {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e5e7eb;
+        }
+        
+        /* Testimonial */
+        .testimonial-section {
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            border-left: 4px solid #1e6f5c;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        
+        .testimonial-author {
+            color: #0f2b3d;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .testimonial-role {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1e6f5c 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            margin: 60px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        
+        .contact-email {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+        
+        .contact-email a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-email a:hover {
+            border-bottom-color: white;
+        }
+        
+        .contact-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        
+        .benefit {
+            color: #d1d5db;
+            font-size: 0.95rem;
+        }
+        
+        /* Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit {
+            background: white;
+            color: #1e6f5c;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+        
+        .form-submit:hover {
+            background: #f0f9f7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .form-message {
+            padding: 14px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            margin-top: 8px;
+        }
+        
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        /* Footer */
+        .footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 40px 0;
+            text-align: center;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            nav { flex-direction: column; gap: 20px; }
+            .nav-links { gap: 20px; flex-direction: column; align-items: flex-start; }
+            .hero { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-content { grid-template-columns: 1fr; gap: 40px; }
+            .section { padding: 60px 0; }
+        }
     </style>
 </head>
 <body>
@@ -61,125 +590,263 @@
         <nav>
             <div class="logo">Derrick Mbesa</div>
             <div class="nav-links">
-                <a href="#">Home</a>
+                <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
+                <a href="#credentials">Credentials</a>
                 <a href="#testimonials">Testimonials</a>
-                <a href="#contact" class="btn-outline">Contact</a>
+                <a href="#contact" class="btn-nav">Contact</a>
             </div>
         </nav>
     </div>
 
     <div class="container">
-        <div class="hero">
+        <div class="hero" id="home">
             <div class="hero-content">
-                <div class="hero-badge">Available for new projects</div>
                 <h1>Medical Virtual <span class="hero-highlight">Assistant</span></h1>
-                <p>Reclaiming your time. Optimizing your workflow. I provide high-level administrative and clinical support so you can focus on what matters most — your patients.</p>
-                <div class="stats">
-                    <div class="stat-item"><h3>5+</h3><p>Years Experience</p></div>
-                    <div class="stat-item"><h3>✓</h3><p>Healthcare Support</p></div>
-                    <div class="stat-item"><h3>🔒</h3><p>HIPAA Compliant</p></div>
+                <p class="hero-subtitle">Reclaiming your time. Optimizing your workflow. I provide high-level administrative and clinical support so you can focus on what matters most — your patients.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Get Started</a>
+                    <a href="#services" class="btn-secondary">View Services</a>
                 </div>
-                <div style="margin-top: 24px;">
-                    <a href="#contact" class="btn-primary">Get in Touch</a>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">HIPAA Compliant</div>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png" alt="Derrick Mbesa" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover;">
+                <div class="avatar">DM</div>
             </div>
         </div>
     </div>
 
-    <div class="container" id="about">
-        <div class="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>Your Partner in Healthcare Administration</h3>
-                    <p style="margin: 16px 0;">As a healthcare provider, your priority is your patients, not your paperwork. However, the daily reality often involves navigating EHR systems, managing overflowing inboxes, and battling insurance red tape.</p>
-                    <p>That is where I come in. As an experienced Medical Virtual Assistant, I provide high-level administrative and clinical support designed to reclaim your time and optimize your practice workflow.</p>
+    <div class="container section" id="about">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Your Partner in Healthcare Administration</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>As a healthcare provider, your priority is your patients, not your paperwork. However, the daily reality often involves navigating EHR systems, managing overflowing inboxes, and battling insurance red tape.</p>
+                <p>That is where I come in. As an experienced Medical Virtual Assistant, I provide high-level administrative and clinical support designed to reclaim your time and optimize your practice workflow. I understand the unique challenges of healthcare administration and bring both technical expertise and clinical insight to every project.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <h4>5+</h4>
+                    <p>Years of Professional Experience</p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card"><h3>2+</h3><p>Years Experience</p></div>
-                    <div class="stat-card"><h3>50+</h3><p>Projects Completed</p></div>
-                    <div class="stat-card"><h3>100%</h3><p>HIPAA Compliant</p></div>
+                <div class="stat-box">
+                    <h4>50+</h4>
+                    <p>Healthcare Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <h4>100%</h4>
+                    <p>HIPAA Compliant Operations</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container" id="services">
-        <h2 class="section-title">Services</h2>
-        <p class="section-subtitle">Tailored administrative and clinical services designed to optimize your practice workflow</p>
+    <div class="container section" id="services">
+        <div class="section-label">Services</div>
+        <h2 class="section-title">Comprehensive Healthcare Support</h2>
+        <p class="section-desc">Tailored administrative and clinical services designed to optimize your practice workflow</p>
         <div class="services-grid">
-            <div class="service-card"><div class="service-icon">📅</div><h3>Appointment Scheduling</h3><p>Streamline your schedule with efficient booking systems, reminder management, and calendar coordination.</p></div>
-            <div class="service-card"><div class="service-icon">💰</div><h3>Medical Coding & Billing</h3><p>Accurate ICD-10 and CPT coding with meticulous attention to detail for proper reimbursement.</p></div>
-            <div class="service-card"><div class="service-icon">📊</div><h3>Remote Patient Monitoring</h3><p>Monitor patient vitals and health metrics through remote dashboards with timely alerts.</p></div>
-            <div class="service-card"><div class="service-icon">🤝</div><h3>Care Coordination</h3><p>Seamless coordination between providers, patients, and care teams with professional communication.</p></div>
-            <div class="service-card"><div class="service-icon">✅</div><h3>Insurance Verification</h3><p>Thorough insurance verification and proactive prior authorization requests.</p></div>
-            <div class="service-card"><div class="service-icon">💻</div><h3>Telehealth Support</h3><p>Complete telehealth session management including scheduling and technical support.</p></div>
-            <div class="service-card"><div class="service-icon">📝</div><h3>Medical Scribing</h3><p>Real-time documentation of patient encounters with accurate SOAP notes.</p></div>
+            <div class="service-card">
+                <div class="service-icon">📅</div>
+                <h3>Appointment Scheduling</h3>
+                <p>Streamline your schedule with efficient booking systems, reminder management, and calendar coordination.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Medical Coding & Billing</h3>
+                <p>Accurate ICD-10 and CPT coding with meticulous attention to detail for proper reimbursement.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Remote Patient Monitoring</h3>
+                <p>Monitor patient vitals and health metrics through remote dashboards with timely alerts.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Care Coordination</h3>
+                <p>Seamless coordination between providers, patients, and care teams with professional communication.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✅</div>
+                <h3>Insurance Verification</h3>
+                <p>Thorough insurance verification and proactive prior authorization requests.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Telehealth Support</h3>
+                <p>Complete telehealth session management including scheduling and technical support.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <h3>Medical Scribing</h3>
+                <p>Real-time documentation of patient encounters with accurate SOAP notes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>EHR Management</h3>
+                <p>Expert navigation of Epic, Cerner, Athena, and other major EHR platforms.</p>
+            </div>
         </div>
-        <div style="text-align: center; margin: 40px 0;"><p style="font-style: italic; max-width: 700px; margin: 0 auto;">"The best version of your practice starts when you are free to be a doctor again. I handle the complexity of the back office so you can focus on the person in the exam room."</p></div>
     </div>
 
-    <div class="container" id="why-me">
-        <h2 class="section-title">Why Choose Me</h2>
-        <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px,1fr));">
-            <div class="service-card"><h3>🔒 HIPAA Adherence</h3><p>Your data security is my top priority with strict compliance protocols.</p></div>
-            <div class="service-card"><h3>🩺 Clinical Insight</h3><p>Deep proficiency in documentation and clinical workflows.</p></div>
-            <div class="service-card"><h3>📈 Revenue Focused</h3><p>Expert in denial prevention and Revenue Cycle Management.</p></div>
-            <div class="service-card"><h3>💻 Tech Savvy</h3><p>Advanced skills in EHRs, scheduling platforms, and data management.</p></div>
-            <div class="service-card"><h3>⚡ Flexible Support</h3><p>Available to scale based on your practice specific needs.</p></div>
-        </div>
-    </div>
-
-    <div class="container">
+    <div class="container section" id="credentials">
+        <div class="section-label">Education & Credentials</div>
         <h2 class="section-title">Credentials & Expertise</h2>
-        <div class="education-grid">
-            <div class="edu-card"><h3>🎓 Virtual Assistant</h3><p>ALX · 2025</p></div>
-            <div class="edu-card"><h3>💊 Diploma in Pharmacy</h3><p>The Technical University of Kenya · 2017-2021</p></div>
-            <div class="edu-card"><h3>🏥 Medical Virtual Assistant</h3><p>The MedVa Launchpad · Oct-Dec 2025</p></div>
-            <div class="edu-card"><h3>📜 HIPAA Compliance Certificate</h3><p>Udemy · Oct 2025</p></div>
+        <div class="credentials-grid">
+            <div class="credential-card">
+                <div class="credential-year">2025</div>
+                <h4>Virtual Assistant Certification</h4>
+                <p>ALX</p>
+            </div>
+            <div class="credential-card">
+                <div class="credential-year">In Progress</div>
+                <h4>Bachelor of Pharmacy</h4>
+                <p>The Technical University of Kenya</p>
+            </div>
+            <div class="credential-card">
+                <div class="credential-year">2017 - 2021</div>
+                <h4>Diploma in Pharmacy</h4>
+                <p>The Technical University of Kenya</p>
+            </div>
+            <div class="credential-card">
+                <div class="credential-year">Oct - Dec 2025</div>
+                <h4>Medical Virtual Assistant</h4>
+                <p>The MedVA Launchpad</p>
+            </div>
+            <div class="credential-card">
+                <div class="credential-year">Oct 2025</div>
+                <h4>HIPAA Compliance Certificate</h4>
+                <p>Udemy</p>
+            </div>
+            <div class="credential-card">
+                <div class="credential-year">Professional</div>
+                <h4>Licensed Pharmaceutical Technologist</h4>
+                <p>Verified & Active</p>
+            </div>
         </div>
-        <div class="tools">
-            <span class="tool-badge">Epic</span><span class="tool-badge">Cerner</span><span class="tool-badge">Athenahealth</span><span class="tool-badge">AdvancedMD</span><span class="tool-badge">Kareo</span><span class="tool-badge">Excel</span><span class="tool-badge">Google Sheets</span><span class="tool-badge">Zoom</span><span class="tool-badge">Doxy.me</span><span class="tool-badge">Slack</span><span class="tool-badge">Teams</span>
-        </div>
-    </div>
-
-    <div class="container" id="testimonials">
-        <div class="testimonials">
-            <h2 class="section-title">Client Feedback</h2>
-            <div class="testimonial-card">
-                <p>"After seeing Derrick in action, I am fully confident in his technical capabilities. He demonstrated mastery of the EHR environment, navigating complex interfaces with precision. What sets Derrick apart is his attention to detail in transcribing/scribing accurate SOAP notes, ensuring ICD-10 codes match the diagnosis, or performing chart audits. He understands that in a clinical setting, accuracy is synonymous with patient safety. Any practice looking for technical excellence would be lucky to partner with him."</p>
-                <p style="margin-top: 20px; font-weight: bold;">— MVA PRECIOUS MADU, Medical Virtual Assistant</p>
+        <div class="tools-section">
+            <h4>Platform Proficiencies</h4>
+            <div class="tools-list">
+                <span class="tool-badge">Epic</span>
+                <span class="tool-badge">Cerner</span>
+                <span class="tool-badge">Athenahealth</span>
+                <span class="tool-badge">AdvancedMD</span>
+                <span class="tool-badge">Kareo</span>
+                <span class="tool-badge">DrChrono</span>
+                <span class="tool-badge">Excel</span>
+                <span class="tool-badge">Google Sheets</span>
+                <span class="tool-badge">Airtable</span>
+                <span class="tool-badge">Zoom</span>
+                <span class="tool-badge">Doxy.me</span>
+                <span class="tool-badge">Slack</span>
+                <span class="tool-badge">Microsoft Teams</span>
             </div>
         </div>
     </div>
 
-    <div class="container" id="contact">
-        <div class="cta">
-            <h2>Ready to elevate your practice efficiency?</h2>
-            <p style="margin-top: 16px;">Contact me today to discuss how my tailored services can support your clinical goals and give you back your peace of mind.</p>
-            <div class="cta-buttons">
-                <!-- UPDATE THESE LINKS WITH YOUR ACTUAL URLs -->
-                <a href="mailto:https://mail.google.com/mail/u/0/?pli=1#inbox?compose=new" class="btn-primary">Contact Me</a>
-                <a href="https://drive.google.com/drive/folders/1_lJge9CGZDGO32HDMJFkITypF3twyJCw?usp=drive_link" target="_blank" class="btn-secondary">View My Portfolio</a>
-                <a href="https://calendly.com/mbesad6" target="_blank" class="btn-secondary">Book Consultation</a>
-            </div>
-            <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-                <span>🔒 HIPAA Compliant</span>
-                <span>⚡ Quick Response</span>
-                <span>🕒 Flexible Hours</span>
+    <div class="container section" id="testimonials">
+        <div class="section-label">Client Feedback</div>
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonial-section">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"After seeing Derrick in action, I am fully confident in his technical capabilities. He demonstrated mastery of the EHR environment, navigating complex interfaces with precision. What sets Derrick apart is his attention to detail in transcribing/scribing accurate SOAP notes, ensuring ICD-10 codes match the diagnosis, or performing chart audits. He understands that in a clinical setting, accuracy is synonymous with patient safety. Any practice looking for technical excellence would be lucky to partner with him."</p>
+            <div class="testimonial-author">MVA Precious Madu</div>
+            <div class="testimonial-role">Medical Virtual Assistant & Industry Expert</div>
+        </div>
+    </div>
+
+    <div class="container section" id="contact">
+        <div class="contact-section">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Elevate Your Practice?</h2>
+                    <p>Contact me today to discuss how my tailored services can support your clinical goals and give you back your peace of mind.</p>
+                    <div class="contact-email">
+                        <span>📧</span>
+                        <a href="mailto:mbesad6@gmail.com">mbesad6@gmail.com</a>
+                    </div>
+                    <div class="contact-benefits">
+                        <div class="benefit">✓ HIPAA Compliant Operations</div>
+                        <div class="benefit">✓ Quick Response Time</div>
+                        <div class="benefit">✓ Flexible Availability</div>
+                        <div class="benefit">✓ Proven Track Record</div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" action="https://formspree.io/f/xyzqwert" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div id="formMessage" class="form-message"></div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="footer">
-            <p>© 2026 Derrick Mbesa — Medical Virtual Assistant. All rights reserved.</p>
+            <p>© 2025 Derrick Mbesa — Medical Virtual Assistant. All rights reserved.</p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const formMessage = document.getElementById('formMessage');
+            
+            setTimeout(() => {
+                formMessage.textContent = 'Message sent successfully! I\'ll be in touch within 24 hours.';
+                formMessage.classList.add('success');
+                formMessage.style.display = 'block';
+                document.getElementById('contactForm').reset();
+                
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                    formMessage.classList.remove('success');
+                }, 5000);
+            }, 500);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
