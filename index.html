@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derrick Mbesa — Medical Virtual Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2e44;
+    --teal: #2e8b6e;
+    --teal-dark: #1f6b53;
+    --teal-light: #e8f5f1;
+    --gold: #c9a227;
+    --text: #2c2c2c;
+    --muted: #666;
+    --light-bg: #f8f8f6;
+    --border: #e0e0d8;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── UTILITY BAR ── */
+  .util-bar {
+    background: var(--navy);
+    padding: 8px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .util-bar a {
+    color: #a8c4d8;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .util-bar a:hover { color: #fff; }
+  .util-bar .util-left { display: flex; gap: 24px; }
+  .util-bar .util-right { display: flex; gap: 24px; align-items: center; }
+  .util-bar .avail-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #4ade80; display: inline-block; margin-right: 6px;
+  }
+  .util-bar .avail-text { color: #a8c4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 74px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .nav-logo span { font-size: 10px; font-family: 'Source Sans 3', sans-serif; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 2px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 3px;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 540px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(26,46,68,0.97) 0%, rgba(26,46,68,0.88) 50%, rgba(30,90,70,0.82) 100%);
+    z-index: 1;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 32px 32px;
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 40px;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before { content: ''; width: 40px; height: 2px; background: var(--gold); display: block; }
+  .hero h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 20px;
+    max-width: 660px;
+  }
+  .hero p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 13px 30px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--teal);
+    padding: 0;
+  }
+  .stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .stat-item {
+    padding: 24px 32px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+  }
+  .stat-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 40px; }
+  section.alt { background: var(--light-bg); }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'Merriweather', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .section-body {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    margin-top: 12px;
+    transition: gap 0.2s;
+  }
+  .learn-more:hover { gap: 10px; }
+  .learn-more::after { content: '→'; }
+
+  /* ── SERVICES GRID ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .service-card {
+    background: var(--white);
+    padding: 40px 36px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--teal-light); }
+  .service-num {
+    font-family: 'Merriweather', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .service-title {
+    font-family: 'Merriweather', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .service-result-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: var(--teal-light);
+    border: 1px solid rgba(46,139,110,0.2);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* ── TWO COLUMN ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .two-col-reverse { direction: rtl; }
+  .two-col-reverse > * { direction: ltr; }
+
+  /* ── METRICS ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .metric-block {
+    border-left: 3px solid var(--teal);
+    padding: 16px 20px;
+  }
+  .metric-val {
+    font-family: 'Merriweather', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    line-height: 1;
+  }
+  .metric-lbl {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+    line-height: 1.4;
+  }
+  .metric-impact {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── CREDENTIALS ── */
+  .creds-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .cred-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cred-item:last-child { border-bottom: none; }
+  .cred-icon {
+    width: 48px; height: 48px; border-radius: 4px;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cred-icon svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; }
+  .cred-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .cred-org { font-size: 13px; color: var(--muted); }
+  .cred-badge {
+    display: inline-block; margin-top: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px;
+    border-radius: 2px; background: #e8f5f1; color: var(--teal-dark);
+  }
+
+  /* ── TOOLS ── */
+  .tools-groups { display: flex; flex-direction: column; gap: 28px; }
+  .tool-group-name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--navy); margin-bottom: 10px;
+  }
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag {
+    font-size: 13px; padding: 5px 14px;
+    border: 1px solid var(--border); border-radius: 2px;
+    color: var(--text); background: var(--white);
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-block {
+    background: var(--navy);
+    padding: 60px;
+    position: relative;
+  }
+  .testimonial-block::before {
+    content: '\201C';
+    font-family: 'Merriweather', serif;
+    font-size: 140px;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: -10px; left: 36px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.9);
+    max-width: 780px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+  .testimonial-byline { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+  .testimonial-role { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+  /* ── CASE STUDIES ── */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .case-card {
+    background: var(--white);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+  }
+  .case-card:hover { background: var(--teal-light); }
+  .case-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  }
+  .case-title {
+    font-family: 'Merriweather', serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--navy); line-height: 1.35;
+    margin-bottom: 12px; flex: 1;
+  }
+  .case-metric { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .case-link {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: gap 0.2s;
+  }
+  .case-link:hover { gap: 10px; }
+  .case-link::after { content: '→'; }
+
+  /* ── CONTACT CTA ── */
+  .contact-section {
+    background: var(--teal);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .contact-section h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 34px; font-weight: 700; color: var(--white);
+    margin-bottom: 16px;
+  }
+  .contact-section p {
+    font-size: 17px; color: rgba(255,255,255,0.8);
+    max-width: 500px; margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--white); color: var(--teal-dark);
+    padding: 13px 30px; border-radius: 3px;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-white:hover { background: var(--navy); color: var(--white); }
+  .btn-white-outline {
+    border: 2px solid rgba(255,255,255,0.6); color: var(--white);
+    padding: 12px 28px; border-radius: 3px;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-white-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 60px 40px 32px;
+  }
+  .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 32px;
+  }
+  .footer-brand {
+    font-family: 'Merriweather', serif;
+    font-size: 20px; font-weight: 700; color: var(--white);
+    margin-bottom: 4px;
+  }
+  .footer-brand-sub {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
+  }
+  .footer-desc { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; }
+  .footer-col-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--white); margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(255,255,255,0.35);
+  }
+  .footer-compliance {
+    display: flex; gap: 8px; align-items: center;
+  }
+  .compliance-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ── HIPAA NOTICE ── */
+  .hipaa-bar {
+    background: var(--teal-light);
+    border-bottom: 1px solid rgba(46,139,110,0.2);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .hipaa-item {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--teal-dark); display: flex; align-items: center; gap: 6px;
+  }
+  .hipaa-item::before { content: '✓'; }
+
+  /* ── ABOUT TWO COL ── */
+  .about-visual {
+    background: var(--navy);
+    padding: 40px;
+    position: relative;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .about-visual-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, #2e5e4a 100%);
+    opacity: 0.9;
+  }
+  .about-visual-pattern {
+    position: absolute; inset: 0; opacity: 0.05;
+    background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+  .about-visual-content { position: relative; z-index: 1; }
+  .about-quote {
+    font-family: 'Merriweather', serif;
+    font-size: 22px; font-style: italic;
+    color: rgba(255,255,255,0.9); line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .about-quote-attr { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .services-grid, .cases-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 20px; }
+    section { padding: 60px 20px; }
+    .hero { height: auto; padding: 60px 20px; }
+    .hero h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="util-bar">
+  <div class="util-left">
+    <a href="mailto:mbesad6@gmail.com">mbesad6@gmail.com</a>
+    <a href="https://calendly.com/mbesad6" target="_blank">Schedule a consultation</a>
+  </div>
+  <div class="util-right">
+    <span class="avail-text"><span class="avail-dot"></span>Available for remote projects</span>
+    <a href="https://github.com/Mbesad123" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    Derrick Mbesa
+    <span>Medical Virtual Assistant</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#work">Case Studies</a></li>
+    <li><a href="https://calendly.com/mbesad6" target="_blank" class="nav-cta">Book Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Medical Virtual Assistant · HIPAA Compliant</div>
+    <h1>Reclaim Your Time. Elevate Your Practice.</h1>
+    <p>With 5+ years of healthcare operations experience, I help providers streamline administration, maximize revenue, and deliver exceptional patient care — remotely and reliably.</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/mbesad6" target="_blank" class="btn-primary">Book Free Consultation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+</div>
+
+<!-- HIPAA BAR -->
+<div class="hipaa-bar">
+  <div class="hipaa-item">HIPAA Certified</div>
+  <div class="hipaa-item">Medical VA Certified</div>
+  <div class="hipaa-item">5+ Years Experience</div>
+  <div class="hipaa-item">24hr Response Time</div>
+  <div class="hipaa-item">Global Remote Availability</div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">95%+</span>
+      <span class="stat-lbl">Claim Approval Rate</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">35%</span>
+      <span class="stat-lbl">No-Show Reduction</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">99%</span>
+      <span class="stat-lbl">Data Accuracy</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">98%</span>
+      <span class="stat-lbl">Telehealth Success Rate</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">About Me</div>
+        <h2 class="section-heading">Pharmacy expertise meets healthcare administration excellence</h2>
+        <p class="section-body">I'm a Licensed Pharmaceutical Technologist and certified Medical Virtual Assistant with over five years of hands-on healthcare operations experience. My clinical background gives me a unique edge — I don't just understand the paperwork, I understand the patient safety implications behind every code and document.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:32px;">Trusted by multiple healthcare practices globally, I specialize in transforming administrative chaos into streamlined, compliant, revenue-generating workflows — all from a remote setting.</p>
+        <a href="#services" class="learn-more">View my services</a>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-bg"></div>
+        <div class="about-visual-pattern"></div>
+        <div class="about-visual-content">
+          <div class="about-quote">"In a clinical setting, accuracy is synonymous with patient safety."</div>
+          <div class="about-quote-attr">— MVA Precious Madu, Medical VA Expert</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="alt">
+  <div class="section-inner">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-heading">Comprehensive medical virtual assistance</h2>
+    <p class="section-body">From revenue cycle management to telehealth support, I provide end-to-end administrative and clinical services that let you focus on what matters most — your patients.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Appointment Scheduling & Calendar Management</div>
+        <div class="service-desc">Efficient booking systems with reminder management, color-coded visit tracking, patient coordination, and calendar synchronization across platforms.</div>
+        <div class="service-result-tag">Zero double-bookings · 35% no-show reduction</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Medical Coding & Billing</div>
+        <div class="service-desc">Accurate ICD-10 and CPT coding, revenue cycle management with claims processing, denial prevention and analysis, and insurance reimbursement optimization.</div>
+        <div class="service-result-tag">95%+ first-pass approval · 30% denial reduction</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">EHR Management & Clinical Documentation</div>
+        <div class="service-desc">Expert navigation of Epic, Cerner, Athenahealth, and AdvancedMD. Accurate SOAP note documentation, clinical data integrity, and EHR optimization.</div>
+        <div class="service-result-tag">99% data accuracy · 40% faster documentation</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Medical Scribing</div>
+        <div class="service-desc">Real-time patient encounter documentation, conversion of provider-patient dialogue to structured notes, HIPAA-compliant transcription and coding.</div>
+        <div class="service-result-tag">100% accuracy · 50+ notes/month capacity</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-title">Insurance Verification & Prior Authorization</div>
+        <div class="service-desc">Thorough eligibility verification, proactive prior authorization requests, coverage analysis, denial prevention, and claims tracking with follow-up.</div>
+        <div class="service-result-tag">85% pre-verification rate · 2–3 day turnaround</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-title">Telehealth Support</div>
+        <div class="service-desc">Complete telehealth session management, platform setup and technical support (Zoom, Doxy.me), session scheduling, patient communication and troubleshooting.</div>
+        <div class="service-result-tag">98% session success · 25+ weekly sessions</div>
+        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Measurable Impact</div>
+        <h2 class="section-heading">Results that transform your practice</h2>
+        <p class="section-body">Every engagement is measured. Here are the outcomes I consistently deliver for healthcare providers.</p>
+        <div class="metrics-grid">
+          <div class="metric-block">
+            <span class="metric-val">95%+</span>
+            <span class="metric-lbl">First-pass claim approval rate</span>
+            <span class="metric-impact">30% denial reduction</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">35%</span>
+            <span class="metric-lbl">Patient no-show reduction</span>
+            <span class="metric-impact">Improved revenue</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">40%</span>
+            <span class="metric-lbl">Faster clinical documentation</span>
+            <span class="metric-impact">More time for patients</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">85%</span>
+            <span class="metric-lbl">Insurance pre-verification rate</span>
+            <span class="metric-impact">2–3 day avg auth turnaround</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">99%</span>
+            <span class="metric-lbl">Data accuracy rate</span>
+            <span class="metric-impact">Zero compliance issues</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">98%</span>
+            <span class="metric-lbl">Telehealth session success</span>
+            <span class="metric-impact">Seamless patient experience</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/mbesad6" target="_blank" class="btn-primary" style="display:inline-block;">Discuss your practice goals</a>
+      </div>
+      <div>
+        <div class="section-label">Engagement Options</div>
+        <h2 class="section-heading" style="font-size:24px;">Flexible ways to work together</h2>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">
+          <div style="padding:24px;border:1px solid var(--border);border-left:4px solid var(--teal);">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:6px;">Project-Based</div>
+            <div style="font-size:14px;color:var(--muted);">Tackle specific tasks or one-time projects with defined deliverables and timelines.</div>
+          </div>
+          <div style="padding:24px;border:1px solid var(--border);border-left:4px solid var(--teal);">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:6px;">Part-Time Support</div>
+            <div style="font-size:14px;color:var(--muted);">Ongoing assistance scaled to your practice's needs and patient volume.</div>
+          </div>
+          <div style="padding:24px;border:1px solid var(--border);border-left:4px solid var(--teal);">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:6px;">Full-Time Virtual Assistant</div>
+            <div style="font-size:14px;color:var(--muted);">Dedicated support for high-volume practices needing comprehensive daily coverage.</div>
+          </div>
+          <div style="padding:24px;border:1px solid var(--border);border-left:4px solid var(--teal);">
+            <div style="font-weight:700;color:var(--navy);margin-bottom:6px;">Hourly Consultation</div>
+            <div style="font-size:14px;color:var(--muted);">Expert guidance and advice for specific challenges or workflow reviews.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section style="padding:0;background:var(--navy);">
+  <div class="testimonial-block">
+    <div class="testimonial-text">
+      "After seeing Derrick in action, I am fully confident in his technical capabilities. He demonstrated mastery of the EHR environment, navigating complex interfaces with precision. What sets Derrick apart is his attention to detail in transcribing accurate SOAP notes, ensuring ICD-10 codes match the diagnosis, or performing chart audits. He understands that in a clinical setting, accuracy is synonymous with patient safety. Any practice looking for technical excellence would be lucky to partner with him."
+    </div>
+    <div class="testimonial-byline">MVA Precious Madu</div>
+    <div class="testimonial-role">Medical Virtual Assistant & Industry Expert</div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials" class="alt">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Credentials & Education</div>
+        <h2 class="section-heading">Certified. Trained. Ready.</h2>
+        <p class="section-body">A rigorous professional foundation combining pharmaceutical expertise with specialized medical virtual assistant training.</p>
+        <ul class="creds-list">
+          <li class="cred-item">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">Licensed Pharmaceutical Technologist</div>
+              <div class="cred-org">Kenya Pharmacy and Poisons Board</div>
+              <span class="cred-badge">Verified & Active</span>
+            </div>
+          </li>
+          <li class="cred-item">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">HIPAA Compliance Certification</div>
+              <div class="cred-org">Udemy · October 2025</div>
+              <span class="cred-badge">Certified</span>
+            </div>
+          </li>
+          <li class="cred-item">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">Medical Virtual Assistant Certification</div>
+              <div class="cred-org">The MedVA Launchpad · Oct–Dec 2025</div>
+              <span class="cred-badge">Certified</span>
+            </div>
+          </li>
+          <li class="cred-item">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">Virtual Assistant Certification</div>
+              <div class="cred-org">ALX Africa · 2025</div>
+              <span class="cred-badge">Certified</span>
+            </div>
+          </li>
+          <li class="cred-item">
+            <div class="cred-icon" style="background:rgba(46,139,110,0.3);">
+              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">Bachelor of Pharmacy</div>
+              <div class="cred-org">Technical University of Kenya</div>
+              <span class="cred-badge" style="background:#fff3cd;color:#856404;">In Progress</span>
+            </div>
+          </li>
+          <li class="cred-item">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <div>
+              <div class="cred-name">Diploma in Pharmacy</div>
+              <div class="cred-org">Technical University of Kenya · 2017–2021</div>
+              <span class="cred-badge">Completed</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Tools & Platforms</div>
+        <h2 class="section-heading" style="font-size:24px;">Expert proficiency across healthcare systems</h2>
+        <div class="tools-groups">
+          <div>
+            <div class="tool-group-name">EHR & Healthcare Platforms</div>
+            <div class="tool-tags">
+              <span class="tool-tag">Epic</span>
+              <span class="tool-tag">Cerner</span>
+              <span class="tool-tag">Athenahealth</span>
+              <span class="tool-tag">AdvancedMD</span>
+              <span class="tool-tag">Kareo</span>
+              <span class="tool-tag">DrChrono</span>
+            </div>
+          </div>
+          <div>
+            <div class="tool-group-name">Telehealth & Communication</div>
+            <div class="tool-tags">
+              <span class="tool-tag">Zoom</span>
+              <span class="tool-tag">Doxy.me</span>
+              <span class="tool-tag">Slack</span>
+              <span class="tool-tag">Microsoft Teams</span>
+            </div>
+          </div>
+          <div>
+            <div class="tool-group-name">Administrative & Data</div>
+            <div class="tool-tags">
+              <span class="tool-tag">Google Sheets</span>
+              <span class="tool-tag">Excel</span>
+              <span class="tool-tag">Airtable</span>
+              <span class="tool-tag">Google Docs</span>
+              <span class="tool-tag">Calendly</span>
+            </div>
+          </div>
+          <div>
+            <div class="tool-group-name">Clinical Knowledge</div>
+            <div class="tool-tags">
+              <span class="tool-tag">ICD-10 Coding</span>
+              <span class="tool-tag">CPT Coding</span>
+              <span class="tool-tag">SOAP Notes</span>
+              <span class="tool-tag">Revenue Cycle Management</span>
+              <span class="tool-tag">Prior Authorization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-heading">Case studies & featured projects</h2>
+    <p class="section-body">Real challenges. Measurable outcomes. Each engagement reflects a commitment to precision, compliance, and results.</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-tag">Revenue Cycle</div>
+        <div class="case-title">Medical Billing & Revenue Cycle Optimization</div>
+        <div class="case-metric">95%+ first-pass approval · 30% denial reduction for a multi-provider practice</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">EHR Management</div>
+        <div class="case-title">EHR Optimization & Data Integrity Improvement</div>
+        <div class="case-metric">99% data accuracy · 40% faster clinical documentation across the practice</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Operations</div>
+        <div class="case-title">Appointment Scheduling System Redesign</div>
+        <div class="case-metric">Eliminated double-bookings · 35% no-show reduction through optimized workflows</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Insurance</div>
+        <div class="case-title">Insurance Verification & Prior Auth Workflow</div>
+        <div class="case-metric">85% pre-verification rate · 2–3 day average authorization turnaround</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Telehealth</div>
+        <div class="case-title">Telehealth Program Implementation & Support</div>
+        <div class="case-metric">98% session success rate · 25+ weekly virtual consultations managed</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Documentation</div>
+        <div class="case-title">Medical Scribing & Clinical Documentation</div>
+        <div class="case-metric">100% accuracy rate · 50+ notes per month with zero compliance issues</div>
+        <a href="#" class="case-link">Read case study</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<div class="contact-section" id="contact">
+  <h2>Ready to elevate your practice?</h2>
+  <p>Book a free 30-minute consultation to discuss your challenges and how I can help streamline your operations.</p>
+  <div class="contact-btns">
+    <a href="https://calendly.com/mbesad6" target="_blank" class="btn-white">Book Free Consultation</a>
+    <a href="mailto:mbesad6@gmail.com" class="btn-white-outline">Send an Email</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Derrick Mbesa</div>
+      <div class="footer-brand-sub">Medical Virtual Assistant</div>
+      <p class="footer-desc">Helping healthcare providers reclaim their time through expert EHR management, medical coding, and clinical documentation. HIPAA compliant. Available globally.</p>
+      <div class="footer-compliance" style="margin-top:20px;">
+        <span class="compliance-badge">HIPAA Certified</span>
+        <span class="compliance-badge">Medical VA Certified</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Appointment Scheduling</a></li>
+        <li><a href="#services">Medical Coding & Billing</a></li>
+        <li><a href="#services">EHR Management</a></li>
+        <li><a href="#services">Medical Scribing</a></li>
+        <li><a href="#services">Insurance Verification</a></li>
+        <li><a href="#services">Telehealth Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Portfolio</div>
+      <ul class="footer-links">
+        <li><a href="#work">Revenue Cycle Case Study</a></li>
+        <li><a href="#work">EHR Optimization</a></li>
+        <li><a href="#work">Scheduling Redesign</a></li>
+        <li><a href="#work">Insurance Workflow</a></li>
+        <li><a href="#work">Telehealth Program</a></li>
+        <li><a href="#work">Medical Scribing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="https://calendly.com/mbesad6" target="_blank">Book a Consultation</a></li>
+        <li><a href="mailto:mbesad6@gmail.com">mbesad6@gmail.com</a></li>
+        <li><a href="https://github.com/Mbesad123" target="_blank">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://wa.me/" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Derrick Mbesa — Medical Virtual Assistant. All rights reserved.</span>
+    <span>Mombasa, Kenya · Available globally for remote engagements</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
