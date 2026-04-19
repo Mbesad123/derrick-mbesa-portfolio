@@ -131,7 +131,7 @@
 }
 
 .hero-slide.active {
-  opacity: 1;
+  opacity: 3;
 }
   .hero-bg {
     position: absolute; inset: 0;
@@ -608,6 +608,24 @@
   }
   .about-quote-attr { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
+ .about-photo-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.about-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--gold);
+  display: block;
+}
+
   @media (max-width: 900px) {
     .services-grid, .cases-grid { grid-template-columns: 1fr; }
     .two-col { grid-template-columns: 1fr; gap: 40px; }
@@ -711,13 +729,16 @@
         <a href="#services" class="learn-more">View my services</a>
       </div>
       <div class="about-visual">
-        <div class="about-visual-bg"></div>
-        <div class="about-visual-pattern"></div>
-        <div class="about-visual-content">
-          <div class="about-quote">"In a clinical setting, accuracy is synonymous with patient safety."</div>
-          <div class="about-quote-attr">— Derrick Mbesa, Medical VA</div>
-        </div>
-      </div>
+  <div class="about-visual-bg"></div>
+  <div class="about-visual-pattern"></div>
+  <div class="about-photo-wrap">
+    <img src="images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png" alt="Derrick Mbesa" class="about-photo">
+  </div>
+  <div class="about-visual-content">
+    <div class="about-quote">"In a clinical setting, accuracy is synonymous with patient safety."</div>
+    <div class="about-quote-attr">— Derrick Mbesa, Medical VA</div>
+  </div>
+</div>
     </div>
   </div>
 </section>
