@@ -120,6 +120,19 @@
     align-items: center;
     overflow: hidden;
   }
+ .hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 0;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
   .hero-bg {
     position: absolute; inset: 0;
     background:
@@ -638,9 +651,12 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-pattern"></div>
+<div class="hero" id="hero-slider">
+  <div class="hero-slide active" style="background-image: url('images/YOUR-IMAGE-1.jpg')"></div>
+  <div class="hero-slide" style="background-image: url('images/YOUR-IMAGE-2.jpg')"></div>
+  <div class="hero-slide" style="background-image: url('images/YOUR-IMAGE-3.jpg')"></div>
   <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Medical Virtual Assistant · HIPAA Compliant</div>
     <h1>Reclaim Your Time. Elevate Your Practice.</h1>
@@ -1056,6 +1072,7 @@
 </footer>
 
 <script>
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -1065,6 +1082,18 @@
       }
     });
   });
+
+  // Background image slider
+  const slides = document.querySelectorAll('.hero-slide');
+  let current = 0;
+
+  function nextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(nextSlide, 5000); // changes every 5 seconds
 </script>
 </body>
 </html>
