@@ -40,19 +40,11 @@
     font-size: 12px;
     letter-spacing: 0.04em;
   }
-  .util-bar a {
-    color: #a8c4d8;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .util-bar a { color: #a8c4d8; text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
   .util-bar a:hover { color: #fff; }
   .util-bar .util-left { display: flex; gap: 24px; }
   .util-bar .util-right { display: flex; gap: 24px; align-items: center; }
-  .util-bar .avail-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #4ade80; display: inline-block; margin-right: 6px;
-  }
+  .util-bar .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: inline-block; margin-right: 6px; }
   .util-bar .avail-text { color: #a8c4d8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
 
   /* ── NAV ── */
@@ -69,593 +61,369 @@
     z-index: 100;
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   }
-  .nav-logo {
-    font-family: 'Merriweather', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--navy);
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
+  .nav-logo { font-family: 'Merriweather', serif; font-size: 18px; font-weight: 700; color: var(--navy); text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
   .nav-logo span { font-size: 10px; font-family: 'Source Sans 3', sans-serif; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 2px; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal); }
-  .nav-cta {
-    background: var(--teal);
-    color: var(--white) !important;
-    padding: 10px 22px;
-    border-radius: 3px;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    text-decoration: none;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
+  .nav-cta { background: var(--teal); color: var(--white) !important; padding: 10px 22px; border-radius: 3px; font-size: 13px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
   .nav-cta:hover { background: var(--teal-dark) !important; color: var(--white) !important; }
 
   /* ── HERO ── */
   .hero {
-  position: relative;
-  height: 540px;
-  width: 100%;
-  object-fit: cover;
-  background: var(--navy);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
- .hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-  z-index: 0;
-}
-
-.hero-slide.active {
-  opacity: 1;
-}
-  .hero-bg {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.65) 0%,
-    rgba(0,0,0,0.25) 55%,
-    rgba(0,0,0,0.1) 100%
-  );
-  z-index: 1;
-}
-  .hero-pattern {
-    position: absolute; inset: 0; opacity: 0.04;
-    background-image: radial-gradient(circle, #fff 1px, transparent 9px);
-    background-size: 120px 120px;
+    position: relative;
+    width: 100vw;
+    height: 540px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
     z-index: 0;
   }
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--teal);
-    color: var(--white);
-    padding: 13px 30px;
-    border-radius: 3px;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: background 0.2s;
-    display: inline-block;
-  }
+  .hero-slide.active { opacity: 1; }
+  .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.1) 100%); z-index: 1; }
+  .hero-pattern { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.04; background-image: radial-gradient(circle, #fff 1px, transparent 9px); background-size: 120px 120px; z-index: 0; }
+
+  .btn-primary { background: var(--teal); color: var(--white); padding: 13px 30px; border-radius: 3px; font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; display: inline-block; }
   .btn-primary:hover { background: var(--teal-dark); }
-  .btn-outline {
-    border: 2px solid rgba(255,255,255,0.5);
-    color: var(--white);
-    padding: 12px 28px;
-    border-radius: 3px;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-block;
-  }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.5); color: var(--white); padding: 12px 28px; border-radius: 3px; font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
   .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
+  /* Watch Intro Button */
+  .btn-watch {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; background: none; border: none;
+    transition: color 0.2s;
+  }
+  .btn-watch:hover { color: #fff; }
+  .watch-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; flex-shrink: 0;
+  }
+  .btn-watch:hover .watch-icon { background: rgba(255,255,255,0.12); border-color: #fff; }
+  .watch-icon svg { width: 14px; height: 14px; fill: white; margin-left: 3px; }
+
+  /* ── VIDEO MODAL ── */
+  .video-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .video-modal-overlay.open { opacity: 1; pointer-events: all; }
+  .video-modal {
+    position: relative;
+    width: 90%;
+    max-width: 860px;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  .video-modal-overlay.open .video-modal { transform: scale(1); }
+  .video-modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: rgba(255,255,255,0.15); border: none;
+    color: white; width: 36px; height: 36px; border-radius: 50%;
+    font-size: 20px; cursor: pointer; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; line-height: 1;
+  }
+  .video-modal-close:hover { background: rgba(255,255,255,0.3); }
+  .video-wrapper {
+    position: relative; padding-bottom: 56.25%; height: 0;
+    background: #0a1826;
+  }
+  .video-wrapper iframe,
+  .video-wrapper video {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; border: none;
+  }
+  /* Video placeholder when no actual video */
+  .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0a1826, #1a2e44);
+    color: rgba(255,255,255,0.6); text-align: center; padding: 40px;
+  }
+  .video-placeholder-icon {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .video-placeholder-icon svg { width: 28px; height: 28px; fill: white; margin-left: 5px; }
+  .video-placeholder h3 { font-family: 'Merriweather', serif; font-size: 20px; color: white; margin-bottom: 10px; }
+  .video-placeholder p { font-size: 14px; line-height: 1.65; max-width: 420px; }
+  .video-placeholder .placeholder-note { font-size: 12px; margin-top: 20px; color: rgba(255,255,255,0.35); font-style: italic; }
+
   /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--teal);
-    padding: 0;
-  }
-  .stats-inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .stat-item {
-    padding: 24px 32px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.2);
-  }
+  .stats-bar { background: var(--teal); padding: 0; }
+  .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1100px; margin: 0 auto; }
+  .stat-item { padding: 24px 32px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
   .stat-item:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Merriweather', serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--white);
-    display: block;
-  }
-  .stat-lbl {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    margin-top: 4px;
-    display: block;
-  }
+  .stat-num { font-family: 'Merriweather', serif; font-size: 30px; font-weight: 700; color: var(--white); display: block; }
+  .stat-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 4px; display: block; }
+
+  /* ── HIPAA BAR ── */
+  .hipaa-bar { background: var(--teal-light); border-bottom: 1px solid rgba(46,139,110,0.2); padding: 10px 40px; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .hipaa-item { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal-dark); display: flex; align-items: center; gap: 6px; }
+  .hipaa-item::before { content: '✓'; }
 
   /* ── SECTIONS ── */
   section { padding: 80px 40px; }
   section.alt { background: var(--light-bg); }
-
   .section-inner { max-width: 1100px; margin: 0 auto; }
-
-  .section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
-  }
-  .section-heading {
-    font-family: 'Merriweather', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-  .section-body {
-    font-size: 17px;
-    color: var(--muted);
-    line-height: 1.75;
-    max-width: 640px;
-    margin-bottom: 48px;
-  }
-  .learn-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--teal);
-    text-decoration: none;
-    margin-top: 12px;
-    transition: gap 0.2s;
-  }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .section-heading { font-family: 'Merriweather', serif; font-size: 32px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
+  .section-body { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 48px; }
+  .learn-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); text-decoration: none; margin-top: 12px; transition: gap 0.2s; }
   .learn-more:hover { gap: 10px; }
   .learn-more::after { content: '→'; }
 
-  /* ── SERVICES GRID ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+  /* ── ABOUT VIDEO PANEL ── */
+  .about-video-panel {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    background: var(--navy);
   }
-  .service-card {
-    background: var(--white);
-    padding: 40px 36px;
+  .about-video-thumb {
     position: relative;
-    transition: background 0.2s;
+    padding-bottom: 56.25%;
+    background: linear-gradient(135deg, #0a1826, #1a2e44);
+    cursor: pointer;
+    overflow: hidden;
   }
-  .service-card:hover { background: var(--teal-light); }
-  .service-num {
-    font-family: 'Merriweather', serif;
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--border);
-    line-height: 1;
-    margin-bottom: 16px;
+  .about-video-thumb img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.55;
+    transition: opacity 0.3s, transform 0.4s;
   }
-  .service-title {
-    font-family: 'Merriweather', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-    line-height: 1.3;
+  .about-video-thumb:hover img { opacity: 0.7; transform: scale(1.03); }
+  .about-play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 68px; height: 68px; border-radius: 50%;
+    background: var(--teal); border: 3px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 2;
   }
-  .service-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 16px;
+  .about-video-thumb:hover .about-play-btn { background: var(--teal-dark); transform: translate(-50%, -50%) scale(1.08); }
+  .about-play-btn svg { width: 24px; height: 24px; fill: white; margin-left: 4px; }
+  .about-video-label {
+    position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
   }
-  .service-result-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--teal-dark);
-    background: var(--teal-light);
-    border: 1px solid rgba(46,139,110,0.2);
-    padding: 4px 12px;
-    border-radius: 2px;
+  .about-video-footer {
+    padding: 20px 24px;
+    border-top: 3px solid var(--gold);
+    background: #0f1f2f;
+  }
+  .about-video-name { font-family: 'Merriweather', serif; font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .about-video-role { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .about-video-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .about-video-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; background: rgba(46,139,110,0.2); color: #5ec9a8; border: 1px solid rgba(46,139,110,0.25); }
+
+  /* ── TABBED SERVICES ── */
+  .tabs-wrapper { margin-top: 0; }
+  .tab-nav {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 14px 24px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none; cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+  .tab-panels { position: relative; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; }
+
+  .tab-panel-left {
+    padding: 48px 40px 48px 0;
+    border-right: 1px solid var(--border);
+  }
+  .tab-panel-right {
+    padding: 48px 0 48px 48px;
   }
 
-  /* ── TWO COLUMN ── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .two-col-reverse { direction: rtl; }
-  .two-col-reverse > * { direction: ltr; }
+  .tab-service-num { font-family: 'Merriweather', serif; font-size: 64px; font-weight: 700; color: var(--border); line-height: 1; margin-bottom: 16px; }
+  .tab-service-title { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 16px; line-height: 1.3; }
+  .tab-service-desc { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+  .tab-result-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-dark); background: var(--teal-light); border: 1px solid rgba(46,139,110,0.2); padding: 5px 14px; border-radius: 2px; margin-bottom: 28px; }
 
-  /* ── METRICS ── */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  .tab-deliverables-title { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; }
+  .tab-deliverables { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .tab-deliverables li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); line-height: 1.5; }
+  .tab-deliverables li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 2px; display: block; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"); background-size: contain; }
+
+  .tab-highlights { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .tab-highlight-card { padding: 20px 24px; background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); }
+  .tab-highlight-val { font-family: 'Merriweather', serif; font-size: 32px; font-weight: 700; color: var(--navy); display: block; line-height: 1; }
+  .tab-highlight-lbl { font-size: 13px; color: var(--muted); margin-top: 5px; display: block; }
+  .tab-highlight-impact { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-top: 4px; display: block; }
+
+  /* ── CREDENTIALS TABS ── */
+  .cred-tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
     margin-bottom: 40px;
   }
-  .metric-block {
-    border-left: 3px solid var(--teal);
-    padding: 16px 20px;
+  .cred-tab-btn {
+    padding: 12px 28px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none; cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .metric-val {
-    font-family: 'Merriweather', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--navy);
-    display: block;
-    line-height: 1;
-  }
-  .metric-lbl {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-    display: block;
-    line-height: 1.4;
-  }
-  .metric-impact {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-top: 4px;
-    display: block;
-  }
+  .cred-tab-btn:hover { color: var(--navy); }
+  .cred-tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+  .cred-tab-panel { display: none; }
+  .cred-tab-panel.active { display: block; }
 
-  /* ── CREDENTIALS ── */
+  /* ── CREDENTIALS LIST ── */
   .creds-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-  .cred-item {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 16px;
-    align-items: start;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
+  .cred-item { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
   .cred-item:last-child { border-bottom: none; }
-  .cred-icon {
-    width: 48px; height: 48px; border-radius: 4px;
-    background: var(--teal); display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .cred-icon { width: 48px; height: 48px; border-radius: 4px; background: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .cred-icon svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; }
   .cred-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
   .cred-org { font-size: 13px; color: var(--muted); }
-  .cred-badge {
-    display: inline-block; margin-top: 6px;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 2px 8px;
-    border-radius: 2px; background: #e8f5f1; color: var(--teal-dark);
-  }
+  .cred-badge { display: inline-block; margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: #e8f5f1; color: var(--teal-dark); }
 
   /* ── TOOLS ── */
   .tools-groups { display: flex; flex-direction: column; gap: 28px; }
-  .tool-group-name {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--navy); margin-bottom: 10px;
-  }
+  .tool-group-name { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
   .tool-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tool-tag {
-    font-size: 13px; padding: 5px 14px;
-    border: 1px solid var(--border); border-radius: 2px;
-    color: var(--text); background: var(--white);
-  }
+  .tool-tag { font-size: 13px; padding: 5px 14px; border: 1px solid var(--border); border-radius: 2px; color: var(--text); background: var(--white); transition: all 0.2s; }
+  .tool-tag:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── METRICS ── */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .metric-block { border-left: 3px solid var(--teal); padding: 16px 20px; }
+  .metric-val { font-family: 'Merriweather', serif; font-size: 36px; font-weight: 700; color: var(--navy); display: block; line-height: 1; }
+  .metric-lbl { font-size: 13px; color: var(--muted); margin-top: 6px; display: block; line-height: 1.4; }
+  .metric-impact { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-top: 4px; display: block; }
 
   /* ── TESTIMONIAL ── */
-  .testimonial-block {
-    background: var(--navy);
-    padding: 60px;
-    position: relative;
-  }
-  .testimonial-block::before {
-    content: '\201C';
-    font-family: 'Merriweather', serif;
-    font-size: 140px;
-    color: rgba(255,255,255,0.06);
-    position: absolute;
-    top: -10px; left: 36px;
-    line-height: 1;
-  }
-  .testimonial-text {
-    font-family: 'Merriweather', serif;
-    font-size: 18px;
-    line-height: 1.75;
-    color: rgba(255,255,255,0.9);
-    max-width: 780px;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 32px;
-    font-style: italic;
-  }
+  .testimonial-block { background: var(--navy); padding: 60px; position: relative; }
+  .testimonial-block::before { content: '\201C'; font-family: 'Merriweather', serif; font-size: 140px; color: rgba(255,255,255,0.06); position: absolute; top: -10px; left: 36px; line-height: 1; }
+  .testimonial-text { font-family: 'Merriweather', serif; font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.9); max-width: 780px; position: relative; z-index: 1; margin-bottom: 32px; font-style: italic; }
   .testimonial-byline { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
   .testimonial-role { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
 
-  /* ── CASE STUDIES ── */
-  .cases-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .case-card {
-    background: var(--white);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    transition: background 0.2s;
-  }
+  /* ── CASES GRID ── */
+  .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .case-card { background: var(--white); padding: 32px; display: flex; flex-direction: column; transition: background 0.2s; }
   .case-card:hover { background: var(--teal-light); }
-  .case-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
-  }
-  .case-title {
-    font-family: 'Merriweather', serif;
-    font-size: 16px; font-weight: 700;
-    color: var(--navy); line-height: 1.35;
-    margin-bottom: 12px; flex: 1;
-  }
+  .case-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .case-title { font-family: 'Merriweather', serif; font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 12px; flex: 1; }
   .case-metric { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
-  .case-link {
-    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--teal); text-decoration: none;
-    display: flex; align-items: center; gap: 6px;
-    transition: gap 0.2s;
-  }
+  .case-link { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
   .case-link:hover { gap: 10px; }
   .case-link::after { content: '→'; }
 
   /* ── CONTACT CTA ── */
-  .contact-section {
-    background: var(--teal);
-    padding: 80px 40px;
-    text-align: center;
-  }
-  .contact-section h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 34px; font-weight: 700; color: var(--white);
-    margin-bottom: 16px;
-  }
-  .contact-section p {
-    font-size: 17px; color: rgba(255,255,255,0.8);
-    max-width: 500px; margin: 0 auto 36px;
-    line-height: 1.7;
-  }
+  .contact-section { background: var(--teal); padding: 80px 40px; text-align: center; }
+  .contact-section h2 { font-family: 'Merriweather', serif; font-size: 34px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+  .contact-section p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
   .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-white {
-    background: var(--white); color: var(--teal-dark);
-    padding: 13px 30px; border-radius: 3px;
-    font-weight: 700; font-size: 13px; letter-spacing: 0.05em;
-    text-transform: uppercase; text-decoration: none;
-    transition: all 0.2s; display: inline-block;
-  }
+  .btn-white { background: var(--white); color: var(--teal-dark); padding: 13px 30px; border-radius: 3px; font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
   .btn-white:hover { background: var(--navy); color: var(--white); }
-  .btn-white-outline {
-    border: 2px solid rgba(255,255,255,0.6); color: var(--white);
-    padding: 12px 28px; border-radius: 3px;
-    font-weight: 700; font-size: 13px; letter-spacing: 0.05em;
-    text-transform: uppercase; text-decoration: none;
-    transition: all 0.2s; display: inline-block;
-  }
+  .btn-white-outline { border: 2px solid rgba(255,255,255,0.6); color: var(--white); padding: 12px 28px; border-radius: 3px; font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
   .btn-white-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.6);
-    padding: 60px 40px 32px;
-  }
-  .footer-grid {
-    max-width: 1100px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 32px;
-  }
-  .footer-brand {
-    font-family: 'Merriweather', serif;
-    font-size: 20px; font-weight: 700; color: var(--white);
-    margin-bottom: 4px;
-  }
-  .footer-brand-sub {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
-  }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 60px 40px 32px; }
+  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px; }
+  .footer-brand { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .footer-brand-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
   .footer-desc { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; }
-  .footer-col-title {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--white); margin-bottom: 16px;
-  }
+  .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 16px; }
   .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-links a {
-    font-size: 13px; color: rgba(255,255,255,0.5);
-    text-decoration: none; transition: color 0.2s;
-  }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--white); }
-  .footer-bottom {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 12px; color: rgba(255,255,255,0.35);
-  }
-  .footer-compliance {
-    display: flex; gap: 8px; align-items: center;
-  }
-  .compliance-badge {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
-    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-
-  /* ── HIPAA NOTICE ── */
-  .hipaa-bar {
-    background: var(--teal-light);
-    border-bottom: 1px solid rgba(46,139,110,0.2);
-    padding: 10px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .hipaa-item {
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--teal-dark); display: flex; align-items: center; gap: 6px;
-  }
-  .hipaa-item::before { content: '✓'; }
-
-  /* ── ABOUT TWO COL ── */
-.about-visual {
-  position: relative;
-  min-height: 460px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-}
-
-.about-photo-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.about-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-.about-visual-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 25, 38, 0.92) 0%,
-    rgba(10, 25, 38, 0.55) 40%,
-    rgba(10, 25, 38, 0.08) 100%
-  );
-  z-index: 1;
-}
-
-.about-visual-pattern { display: none; }
-
-.about-visual-content {
-  position: relative;
-  z-index: 2;
-  padding: 36px 36px 36px;
-  border-top: 3px solid var(--gold);
-}
-
-.about-quote {
-  font-family: 'Merriweather', serif;
-  font-size: 18px;
-  font-style: italic;
-  color: #ffffff;
-  line-height: 1.7;
-  margin-bottom: 16px;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-}
-
-.about-quote-attr {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-}
-
- .about-photo-wrap {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-
-.about-photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  border: 3px solid var(--gold);
-  display: block;
-}
+  .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+  .footer-compliance { display: flex; gap: 8px; align-items: center; }
+  .compliance-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.12); }
 
   @media (max-width: 900px) {
-    .services-grid, .cases-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
     .two-col { grid-template-columns: 1fr; gap: 40px; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     nav { padding: 0 20px; }
     section { padding: 60px 20px; }
-    .hero { height: auto; padding: 60px 20px; }
-    .hero h1 { font-size: 30px; }
+    .hero { height: 540px; }
+    .tab-panel.active { grid-template-columns: 1fr; }
+    .tab-panel-left { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 0; }
+    .tab-panel-right { padding: 32px 0; }
+    .tab-btn { padding: 12px 16px; font-size: 11px; }
   }
 </style>
 </head>
 <body>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-label="Introduction video">
+  <div class="video-modal">
+    <button class="video-modal-close" id="closeModal" aria-label="Close video">&times;</button>
+    <div class="video-wrapper">
+      <!--
+        TO ADD YOUR VIDEO:
+        Option A – YouTube: Replace the div.video-placeholder with:
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1" allowfullscreen allow="autoplay"></iframe>
+        Option B – Direct file: Replace with:
+          <video src="your-intro.mp4" controls autoplay></video>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <h3>Derrick Mbesa — Introduction</h3>
+        <p>Replace this placeholder with your YouTube embed or video file. See the HTML comment above for instructions.</p>
+        <div class="placeholder-note">Supports YouTube, Vimeo, or a self-hosted .mp4 file</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- UTILITY BAR -->
 <div class="util-bar">
@@ -691,7 +459,6 @@
   <div class="hero-slide" style="background-image: url('images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png')"></div>
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
-  </div>
 </div>
 
 <!-- HIPAA BAR -->
@@ -734,72 +501,303 @@
         <h2 class="section-heading">Pharmacy expertise meets healthcare administration excellence</h2>
         <p class="section-body">I am a Licensed Pharmacy Technician and Medical Virtual Assistant with over three years of experience in supporting healthcare providers. My clinical background gives me a unique edge — I don't just understand the paperwork, I understand the patient safety implications behind every code and document.</p>
         <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:32px;">Trusted by multiple healthcare practices globally, I specialize in transforming administrative chaos into streamlined, compliant, revenue-generating workflows — all from a remote setting.</p>
-        <a href="#services" class="learn-more">View my services</a>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+          <a href="#services" class="btn-primary" style="font-size:13px;">View My Services</a>
+          <button class="btn-watch" id="openModalAbout" style="color:var(--teal);">
+            <span class="watch-icon" style="border-color:rgba(46,139,110,0.4);width:36px;height:36px;">
+              <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:var(--teal);"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            Watch Introduction
+          </button>
+        </div>
       </div>
-      <div class="about-visual">
-  <div class="about-photo-wrap">
-    <img src="images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png" alt="Derrick Mbesa — Medical Virtual Assistant" class="about-photo">
-  </div>
-  <div class="about-visual-bg"></div>
-  <div class="about-visual-content">
-    <div class="about-quote">"In a clinical setting, accuracy is synonymous with patient safety."</div>
-    <div class="about-quote-attr">— Derrick Mbesa, Licensed Pharmaceutical Technologist & Medical VA</div>
-  </div>
-</div>
+
+      <!-- VIDEO PANEL -->
+      <div class="about-video-panel">
+        <div class="about-video-thumb" id="openModalThumb" role="button" tabindex="0" aria-label="Play introduction video">
+          <img src="images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png" alt="Derrick Mbesa introduction video thumbnail">
+          <div class="about-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="about-video-label">▶ &nbsp;Introduction — Derrick Mbesa</div>
+        </div>
+        <div class="about-video-footer">
+          <div class="about-video-name">Derrick Mbesa</div>
+          <div class="about-video-role">Licensed Pharmaceutical Technologist &amp; Medical VA</div>
+          <div class="about-video-tags">
+            <span class="about-video-tag">HIPAA Certified</span>
+            <span class="about-video-tag">ICD-10 / CPT</span>
+            <span class="about-video-tag">EHR Expert</span>
+            <span class="about-video-tag">Remote</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES (TABBED) -->
 <section id="services" class="alt">
   <div class="section-inner">
     <div class="section-label">What I Do</div>
     <h2 class="section-heading">Comprehensive medical virtual assistance</h2>
     <p class="section-body">From revenue cycle management to telehealth support, I provide end-to-end administrative and clinical services that let you focus on what matters most — your patients.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-title">Appointment Scheduling & Calendar Management</div>
-        <div class="service-desc">Efficient booking systems with reminder management, color-coded visit tracking, patient coordination, and calendar synchronization across platforms.</div>
-        <div class="service-result-tag">Zero double-bookings · 35% no-show reduction</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
+
+    <div class="tabs-wrapper">
+      <div class="tab-nav" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-panel-1" data-tab="1">Scheduling</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-2" data-tab="2">Medical Coding</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-3" data-tab="3">EHR Management</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-4" data-tab="4">Medical Scribing</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-5" data-tab="5">Insurance &amp; Auth</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-6" data-tab="6">Telehealth</button>
       </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-title">Medical Coding & Billing</div>
-        <div class="service-desc">Accurate ICD-10 and CPT coding, revenue cycle management with claims processing, denial prevention and analysis, and insurance reimbursement optimization.</div>
-        <div class="service-result-tag">95%+ first-pass approval · 30% denial reduction</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-title">EHR Management & Clinical Documentation</div>
-        <div class="service-desc">Expert navigation of Epic, Cerner, Athenahealth, and AdvancedMD. Accurate SOAP note documentation, clinical data integrity, and EHR optimization.</div>
-        <div class="service-result-tag">99% data accuracy · 40% faster documentation</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <div class="service-title">Medical Scribing</div>
-        <div class="service-desc">Real-time patient encounter documentation, conversion of provider-patient dialogue to structured notes, HIPAA-compliant transcription and coding.</div>
-        <div class="service-result-tag">100% accuracy · 50+ notes/month capacity</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">05</div>
-        <div class="service-title">Insurance Verification & Prior Authorization</div>
-        <div class="service-desc">Thorough eligibility verification, proactive prior authorization requests, coverage analysis, denial prevention, and claims tracking with follow-up.</div>
-        <div class="service-result-tag">85% pre-verification rate · 2–3 day turnaround</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">06</div>
-        <div class="service-title">Telehealth Support</div>
-        <div class="service-desc">Complete telehealth session management, platform setup and technical support (Zoom, Doxy.me), session scheduling, patient communication and troubleshooting.</div>
-        <div class="service-result-tag">98% session success · 25+ weekly sessions</div>
-        <a href="#work" class="learn-more" style="display:inline-flex;margin-top:16px;">Case study</a>
-      </div>
-    </div>
+
+      <div class="tab-panels">
+
+        <!-- TAB 1 -->
+        <div class="tab-panel active" id="tab-panel-1" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">01</div>
+            <div class="tab-service-title">Appointment Scheduling &amp; Calendar Management</div>
+            <div class="tab-service-desc">Efficient booking systems with reminder management, color-coded visit tracking, patient coordination, and calendar synchronization across all platforms — eliminating conflicts and reducing no-shows.</div>
+            <div class="tab-result-tag">Zero double-bookings · 35% no-show reduction</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>Multi-platform calendar setup and synchronization</li>
+              <li>Automated patient reminder workflows (SMS/email)</li>
+              <li>Color-coded visit type tracking system</li>
+              <li>No-show and cancellation management protocol</li>
+              <li>Wait-list management and slot optimization</li>
+              <li>After-hours scheduling support</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">35%</span>
+                <span class="tab-highlight-lbl">Reduction in patient no-shows</span>
+                <span class="tab-highlight-impact">↑ Revenue per clinic day</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">0</span>
+                <span class="tab-highlight-lbl">Double-bookings since implementation</span>
+                <span class="tab-highlight-impact">Improved provider satisfaction</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">24hr</span>
+                <span class="tab-highlight-lbl">Maximum response time for scheduling requests</span>
+                <span class="tab-highlight-impact">Seamless patient experience</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+        <!-- TAB 2 -->
+        <div class="tab-panel" id="tab-panel-2" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">02</div>
+            <div class="tab-service-title">Medical Coding &amp; Billing</div>
+            <div class="tab-service-desc">Accurate ICD-10 and CPT coding with full revenue cycle management — from claims generation through denial prevention, appeals management, and insurance reimbursement optimization for maximum practice revenue.</div>
+            <div class="tab-result-tag">95%+ first-pass approval · 30% denial reduction</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>ICD-10 and CPT code assignment and validation</li>
+              <li>Claim preparation, scrubbing, and submission</li>
+              <li>Denial analysis and appeal management</li>
+              <li>Payer-specific reimbursement optimization</li>
+              <li>Revenue cycle reporting and trend analysis</li>
+              <li>Compliance audits and documentation review</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">95%+</span>
+                <span class="tab-highlight-lbl">First-pass claim approval rate</span>
+                <span class="tab-highlight-impact">Industry avg is ~78%</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">30%</span>
+                <span class="tab-highlight-lbl">Reduction in claim denials</span>
+                <span class="tab-highlight-impact">↑ Clean revenue captured</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">100%</span>
+                <span class="tab-highlight-lbl">HIPAA-compliant coding practices</span>
+                <span class="tab-highlight-impact">Zero compliance incidents</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+        <!-- TAB 3 -->
+        <div class="tab-panel" id="tab-panel-3" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">03</div>
+            <div class="tab-service-title">EHR Management &amp; Clinical Documentation</div>
+            <div class="tab-service-desc">Expert navigation across major EHR platforms including TherapyNote, Athenahealth, SimplePractice, and DrChrono. Accurate SOAP note documentation, clinical data integrity, and workflow optimization to accelerate provider throughput.</div>
+            <div class="tab-result-tag">99% data accuracy · 40% faster documentation</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>EHR system setup, configuration, and optimization</li>
+              <li>SOAP note creation and structured documentation</li>
+              <li>Patient chart management and data entry</li>
+              <li>Clinical workflow design and refinement</li>
+              <li>Data integrity audits and correction</li>
+              <li>Provider-specific template creation</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">99%</span>
+                <span class="tab-highlight-lbl">Data accuracy rate across all EHR entries</span>
+                <span class="tab-highlight-impact">Zero compliance issues</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">40%</span>
+                <span class="tab-highlight-lbl">Faster clinical documentation turnaround</span>
+                <span class="tab-highlight-impact">More time for patient care</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">4</span>
+                <span class="tab-highlight-lbl">Major EHR platforms proficient in</span>
+                <span class="tab-highlight-impact">Flexible across practice types</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+        <!-- TAB 4 -->
+        <div class="tab-panel" id="tab-panel-4" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">04</div>
+            <div class="tab-service-title">Medical Scribing</div>
+            <div class="tab-service-desc">Real-time patient encounter documentation that converts provider-patient dialogue into precise, structured clinical notes. HIPAA-compliant transcription with same-session turnaround so providers leave the office with charts complete.</div>
+            <div class="tab-result-tag">100% accuracy · 50+ notes/month capacity</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>Real-time or post-encounter transcription</li>
+              <li>SOAP, DAP, and specialty-specific note formats</li>
+              <li>Diagnosis and procedure code assignment</li>
+              <li>Same-session chart completion workflows</li>
+              <li>Quality review and accuracy audits</li>
+              <li>Provider preference customization</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">100%</span>
+                <span class="tab-highlight-lbl">Note accuracy rate — zero corrections needed</span>
+                <span class="tab-highlight-impact">Provider confidence &amp; trust</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">50+</span>
+                <span class="tab-highlight-lbl">Clinical notes per month capacity</span>
+                <span class="tab-highlight-impact">Scalable to practice volume</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">0</span>
+                <span class="tab-highlight-lbl">HIPAA compliance incidents to date</span>
+                <span class="tab-highlight-impact">Fully secure workflow</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+        <!-- TAB 5 -->
+        <div class="tab-panel" id="tab-panel-5" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">05</div>
+            <div class="tab-service-title">Insurance Verification &amp; Prior Authorization</div>
+            <div class="tab-service-desc">Proactive eligibility verification before every appointment, combined with prior authorization management that prevents claim denials before they happen. Coverage analysis, appeals tracking, and payer follow-up handled end-to-end.</div>
+            <div class="tab-result-tag">85% pre-verification rate · 2–3 day turnaround</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>Real-time insurance eligibility verification</li>
+              <li>Benefits and coverage analysis per patient</li>
+              <li>Prior authorization request and tracking</li>
+              <li>Denial prevention and preemptive appeals</li>
+              <li>Payer portal management and follow-up</li>
+              <li>Patient cost estimation and communication</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">85%</span>
+                <span class="tab-highlight-lbl">Insurance pre-verification rate before appointments</span>
+                <span class="tab-highlight-impact">Fewer surprise denials</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">2–3</span>
+                <span class="tab-highlight-lbl">Day average authorization turnaround</span>
+                <span class="tab-highlight-impact">Faster treatment starts</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">30%</span>
+                <span class="tab-highlight-lbl">Reduction in authorization-related denials</span>
+                <span class="tab-highlight-impact">↑ Captured revenue</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+        <!-- TAB 6 -->
+        <div class="tab-panel" id="tab-panel-6" role="tabpanel">
+          <div class="tab-panel-left">
+            <div class="tab-service-num">06</div>
+            <div class="tab-service-title">Telehealth Support</div>
+            <div class="tab-service-desc">Complete virtual visit management from platform setup and patient onboarding through technical support during sessions. Handling 25+ weekly consultations across Zoom Health, Doxy.me, and integrated EHR telehealth modules.</div>
+            <div class="tab-result-tag">98% session success · 25+ weekly sessions</div>
+            <div class="tab-deliverables-title">What's included</div>
+            <ul class="tab-deliverables">
+              <li>Telehealth platform setup and configuration</li>
+              <li>Patient onboarding and tech orientation</li>
+              <li>Pre-session eligibility and consent management</li>
+              <li>Live technical support during consultations</li>
+              <li>Post-session documentation and follow-up</li>
+              <li>Platform: Zoom Health, Doxy.me, EHR-integrated</li>
+            </ul>
+          </div>
+          <div class="tab-panel-right">
+            <div class="tab-deliverables-title">Key metrics</div>
+            <div class="tab-highlights">
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">98%</span>
+                <span class="tab-highlight-lbl">Telehealth session success rate</span>
+                <span class="tab-highlight-impact">Seamless patient experience</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">25+</span>
+                <span class="tab-highlight-lbl">Weekly virtual consultations managed</span>
+                <span class="tab-highlight-impact">High-volume capability</span>
+              </div>
+              <div class="tab-highlight-card">
+                <span class="tab-highlight-val">3</span>
+                <span class="tab-highlight-lbl">Telehealth platforms supported simultaneously</span>
+                <span class="tab-highlight-impact">Flexible to your workflow</span>
+              </div>
+            </div>
+            <a href="#work" class="learn-more" style="margin-top:24px;">View case study</a>
+          </div>
+        </div>
+
+      </div><!-- /tab-panels -->
+    </div><!-- /tabs-wrapper -->
   </div>
 </section>
 
@@ -882,112 +880,120 @@
   </div>
 </section>
 
-<!-- CREDENTIALS -->
+<!-- CREDENTIALS (TABBED) -->
 <section id="credentials" class="alt">
   <div class="section-inner">
-    <div class="two-col">
-      <div>
-        <div class="section-label">Credentials & Education</div>
-        <h2 class="section-heading">Certified. Trained. Ready.</h2>
-        <p class="section-body">A rigorous professional foundation combining pharmaceutical expertise with specialized medical virtual assistant training.</p>
-        <ul class="creds-list">
-          <li class="cred-item">
-            <div class="cred-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <div>
-              <div class="cred-name">Licensed Pharmaceutical Technologist</div>
-              <div class="cred-org">Kenya Pharmacy and Poisons Board</div>
-              <span class="cred-badge">Verified & Active</span>
-            </div>
-          </li>
-          <li class="cred-item">
-            <div class="cred-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-            </div>
-            <div>
-              <div class="cred-name">HIPAA Compliance Certification</div>
-              <div class="cred-org">Accountable · February 2026</div>
-              <span class="cred-badge">Certified</span>
-            </div>
-          </li>
-          <li class="cred-item">
-            <div class="cred-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-            </div>
-            <div>
-              <div class="cred-name">Medical Virtual Assistant Certification</div>
-              <div class="cred-org">The MedVA Launchpad · Oct–Dec 2025</div>
-              <span class="cred-badge">Certified</span>
-            </div>
-          </li>
-          <li class="cred-item">
-            <div class="cred-icon">
-              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <div>
-              <div class="cred-name">Virtual Assistant Certification</div>
-              <div class="cred-org">ALX Africa · 2025</div>
-              <span class="cred-badge">Certified</span>
-            </div>
-          </li>
-          <li class="cred-item">
-            <div class="cred-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-            </div>
-            <div>
-              <div class="cred-name">Diploma in Pharmacy</div>
-              <div class="cred-org">Technical University of Kenya · 2017–2021</div>
-              <span class="cred-badge">Completed</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <div class="section-label">Tools & Platforms</div>
-        <h2 class="section-heading" style="font-size:24px;">Expert proficiency across healthcare systems</h2>
-        <div class="tools-groups">
-          <div>
-            <div class="tool-group-name">EHR & Healthcare Platforms</div>
-            <div class="tool-tags">
-              <span class="tool-tag">TherapyNote</span>
-              <span class="tool-tag">Athenahealth</span>
-              <span class="tool-tag">SimplePractice</span>
-              <span class="tool-tag">DrChrono</span>
-            </div>
+    <div class="section-label">Credentials &amp; Expertise</div>
+    <h2 class="section-heading">Certified. Trained. Ready.</h2>
+    <p class="section-body">A rigorous professional foundation combining pharmaceutical expertise with specialized medical virtual assistant training.</p>
+
+    <div class="cred-tab-nav" role="tablist">
+      <button class="cred-tab-btn active" role="tab" aria-selected="true" data-cred-tab="certs">Certifications &amp; Education</button>
+      <button class="cred-tab-btn" role="tab" aria-selected="false" data-cred-tab="tools">Tools &amp; Platforms</button>
+    </div>
+
+    <!-- CERTIFICATIONS PANEL -->
+    <div class="cred-tab-panel active" id="cred-panel-certs">
+      <ul class="creds-list">
+        <li class="cred-item">
+          <div class="cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div>
-            <div class="tool-group-name">Productivity & Communication Tools</div>
-            <div class="tool-tags">
-              <span class="tool-tag">Monday.com</span>
-              <span class="tool-tag">Zoom</span>
-              <span class="tool-tag">Slack</span>
-              <span class="tool-tag">Microsoft Teams</span>
-            </div>
+            <div class="cred-name">Licensed Pharmaceutical Technologist</div>
+            <div class="cred-org">Kenya Pharmacy and Poisons Board</div>
+            <span class="cred-badge">Verified &amp; Active</span>
+          </div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
           </div>
           <div>
-            <div class="tool-group-name">Administrative & Data</div>
-            <div class="tool-tags">
-              <span class="tool-tag">Google Sheets</span>
-              <span class="tool-tag">Excel</span>
-              <span class="tool-tag">Airtable</span>
-              <span class="tool-tag">Google Docs</span>
-              <span class="tool-tag">Calendly</span>
-            </div>
+            <div class="cred-name">HIPAA Compliance Certification</div>
+            <div class="cred-org">Accountable · February 2026</div>
+            <span class="cred-badge">Certified</span>
+          </div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
           </div>
           <div>
-            <div class="tool-group-name">Clinical Knowledge</div>
-            <div class="tool-tags">
-              <span class="tool-tag">ICD-10 Coding</span>
-              <span class="tool-tag">CPT Coding</span>
-              <span class="tool-tag">SOAP Notes</span>
-              <span class="tool-tag">Revenue Cycle Management</span>
-              <span class="tool-tag">Prior Authorization</span>
-            </div>
+            <div class="cred-name">Medical Virtual Assistant Certification</div>
+            <div class="cred-org">The MedVA Launchpad · Oct–Dec 2025</div>
+            <span class="cred-badge">Certified</span>
+          </div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <div class="cred-name">Virtual Assistant Certification</div>
+            <div class="cred-org">ALX Africa · 2025</div>
+            <span class="cred-badge">Certified</span>
+          </div>
+        </li>
+        <li class="cred-item">
+          <div class="cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          </div>
+          <div>
+            <div class="cred-name">Diploma in Pharmacy</div>
+            <div class="cred-org">Technical University of Kenya · 2017–2021</div>
+            <span class="cred-badge">Completed</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- TOOLS PANEL -->
+    <div class="cred-tab-panel" id="cred-panel-tools">
+      <div class="tools-groups">
+        <div>
+          <div class="tool-group-name">EHR &amp; Healthcare Platforms</div>
+          <div class="tool-tags">
+            <span class="tool-tag">TherapyNote</span>
+            <span class="tool-tag">Athenahealth</span>
+            <span class="tool-tag">SimplePractice</span>
+            <span class="tool-tag">DrChrono</span>
+          </div>
+        </div>
+        <div>
+          <div class="tool-group-name">Productivity &amp; Communication</div>
+          <div class="tool-tags">
+            <span class="tool-tag">Monday.com</span>
+            <span class="tool-tag">Zoom Health</span>
+            <span class="tool-tag">Doxy.me</span>
+            <span class="tool-tag">Slack</span>
+            <span class="tool-tag">Microsoft Teams</span>
+          </div>
+        </div>
+        <div>
+          <div class="tool-group-name">Administrative &amp; Data</div>
+          <div class="tool-tags">
+            <span class="tool-tag">Google Sheets</span>
+            <span class="tool-tag">Excel</span>
+            <span class="tool-tag">Airtable</span>
+            <span class="tool-tag">Google Docs</span>
+            <span class="tool-tag">Calendly</span>
+          </div>
+        </div>
+        <div>
+          <div class="tool-group-name">Clinical Knowledge</div>
+          <div class="tool-tags">
+            <span class="tool-tag">ICD-10 Coding</span>
+            <span class="tool-tag">CPT Coding</span>
+            <span class="tool-tag">SOAP Notes</span>
+            <span class="tool-tag">Revenue Cycle Management</span>
+            <span class="tool-tag">Prior Authorization</span>
+            <span class="tool-tag">HIPAA Compliance</span>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -995,18 +1001,18 @@
 <section id="work">
   <div class="section-inner">
     <div class="section-label">Portfolio</div>
-    <h2 class="section-heading">Case studies & featured projects</h2>
+    <h2 class="section-heading">Case studies &amp; featured projects</h2>
     <p class="section-body">Real challenges. Measurable outcomes. Each engagement reflects a commitment to precision, compliance, and results.</p>
     <div class="cases-grid">
       <div class="case-card">
         <div class="case-tag">Revenue Cycle</div>
-        <div class="case-title">Medical Billing & Revenue Cycle Optimization</div>
+        <div class="case-title">Medical Billing &amp; Revenue Cycle Optimization</div>
         <div class="case-metric">95%+ first-pass approval · 30% denial reduction for a multi-provider practice</div>
         <a href="#" class="case-link">Read case study</a>
       </div>
       <div class="case-card">
         <div class="case-tag">EHR Management</div>
-        <div class="case-title">EHR Optimization & Data Integrity Improvement</div>
+        <div class="case-title">EHR Optimization &amp; Data Integrity Improvement</div>
         <div class="case-metric">99% data accuracy · 40% faster clinical documentation across the practice</div>
         <a href="#" class="case-link">Read case study</a>
       </div>
@@ -1018,19 +1024,19 @@
       </div>
       <div class="case-card">
         <div class="case-tag">Insurance</div>
-        <div class="case-title">Insurance Verification & Prior Auth Workflow</div>
+        <div class="case-title">Insurance Verification &amp; Prior Auth Workflow</div>
         <div class="case-metric">85% pre-verification rate · 2–3 day average authorization turnaround</div>
         <a href="#" class="case-link">Read case study</a>
       </div>
       <div class="case-card">
         <div class="case-tag">Telehealth</div>
-        <div class="case-title">Telehealth Program Implementation & Support</div>
+        <div class="case-title">Telehealth Program Implementation &amp; Support</div>
         <div class="case-metric">98% session success rate · 25+ weekly virtual consultations managed</div>
         <a href="#" class="case-link">Read case study</a>
       </div>
       <div class="case-card">
         <div class="case-tag">Documentation</div>
-        <div class="case-title">Medical Scribing & Clinical Documentation</div>
+        <div class="case-title">Medical Scribing &amp; Clinical Documentation</div>
         <div class="case-metric">100% accuracy rate · 50+ notes per month with zero compliance issues</div>
         <a href="#" class="case-link">Read case study</a>
       </div>
@@ -1041,7 +1047,8 @@
 <!-- CONTACT CTA -->
 <div class="contact-section" id="contact">
   <h2>Ready to elevate your practice?</h2>
-  <p>Schedule a consultation to explore virtual assistance will reduce your administrative burden, improve revenue cycle performance, and free you to focus on patient care.</p>
+  <p>Schedule a consultation to explore how virtual assistance will reduce your administrative burden, improve revenue cycle performance, and free you to focus on patient care.</p>
+  <div class="contact-btns">
     <a href="https://calendly.com/mbesad6" target="_blank" class="btn-white">Book Free Consultation</a>
     <a href="mailto:mbesad6@gmail.com" class="btn-white-outline">Send an Email</a>
   </div>
@@ -1063,7 +1070,7 @@
       <div class="footer-col-title">Services</div>
       <ul class="footer-links">
         <li><a href="#services">Appointment Scheduling</a></li>
-        <li><a href="#services">Medical Coding & Billing</a></li>
+        <li><a href="#services">Medical Coding &amp; Billing</a></li>
         <li><a href="#services">EHR Management</a></li>
         <li><a href="#services">Medical Scribing</a></li>
         <li><a href="#services">Insurance Verification</a></li>
@@ -1099,28 +1106,76 @@
 </footer>
 
 <script>
-  // Smooth scroll
+  // ── SMOOTH SCROLL ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 
-  // Background image slider
+  // ── HERO SLIDESHOW ──
   const slides = document.querySelectorAll('.hero-slide');
   let current = 0;
-
   function nextSlide() {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }
+  setInterval(nextSlide, 5000);
 
-  setInterval(nextSlide, 5000); // changes every 5 seconds
+  // ── VIDEO MODAL ──
+  const modal = document.getElementById('videoModal');
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('openModalAbout').addEventListener('click', openModal);
+  document.getElementById('openModalThumb').addEventListener('click', openModal);
+  document.getElementById('openModalThumb').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(); });
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── SERVICES TABS ──
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      tabPanels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tab-panel-' + target).classList.add('active');
+    });
+  });
+
+  // ── CREDENTIALS TABS ──
+  const credTabBtns = document.querySelectorAll('.cred-tab-btn');
+  const credPanels = document.querySelectorAll('.cred-tab-panel');
+
+  credTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.credTab;
+
+      credTabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      credPanels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('cred-panel-' + target).classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
