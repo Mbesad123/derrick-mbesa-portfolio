@@ -36,35 +36,86 @@ nav{background:var(--white);padding:0 48px;display:flex;justify-content:space-be
 .nav-cta{background:var(--teal)!important;color:var(--white)!important;padding:10px 22px;border-radius:3px;font-size:12px!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.06em!important;text-decoration:none!important;transition:background .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--teal-dark)!important}
 
-/* ── HERO (reduced) ── */
+/* ── HERO SLIDESHOW ── */
 .hero{
-  position:relative;background:var(--navy);
-  display:grid;grid-template-columns:1fr 120px;
-  min-height:160px;          /* was 280px */
+  position:relative;
+  width:100%;height:420px;
+  background:var(--navy);
   overflow:hidden;
 }
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,46,68,.98) 0%,rgba(26,46,68,.88) 45%,rgba(20,60,48,.65) 100%);z-index:1}
-.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:32px 32px;z-index:0}
-.hero-left{
-  position:relative;z-index:2;
-  padding:36px 48px;         /* was 80px 48px 80px 48px */
-  display:flex;flex-direction:column;justify-content:center;
+
+/* Each slide fills the hero completely */
+.hero-slide{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+  z-index:0;
 }
-.hero-eyebrow{
-  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:12px;   /* was 20px */
-  display:flex;align-items:center;gap:10px;
+.hero-slide.active{opacity:1;z-index:1}
+
+/* Image slides */
+.hero-slide-img{
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
 }
-.hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);display:block}  /* was 40px */
-.hero h1{
-  font-family:'Merriweather',serif;font-size:28px;  /* was 40px */
-  font-weight:700;color:var(--white);line-height:1.25;margin-bottom:14px; /* was 20px */
+
+/* Video slide */
+.hero-slide-video{background:#000}
+.hero-slide-video video{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
 }
-.hero-desc{
-  font-size:15px;color:rgba(255,255,255,.78);  /* was 17px */
-  line-height:1.65;margin-bottom:24px;max-width:520px; /* was 32px */
+
+/* Overlay + dots pattern sit above all slides */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.05) 100%);
+  z-index:10;pointer-events:none;
 }
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-pattern{
+  position:absolute;inset:0;opacity:.04;
+  background-image:radial-gradient(circle,#fff 1px,transparent 1px);
+  background-size:32px 32px;z-index:9;pointer-events:none;
+}
+
+/* Dot navigation */
+.hero-dots{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:20;
+}
+.hero-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;
+  transition:background .3s,transform .3s;
+}
+.hero-dot.active{background:#fff;transform:scale(1.25)}
+
+/* Slide counter badge */
+.hero-counter{
+  position:absolute;top:18px;right:20px;z-index:20;
+  font-size:11px;font-weight:700;letter-spacing:.1em;
+  color:rgba(255,255,255,.55);
+}
+
+/* Video mute toggle inside hero */
+.hero-mute-btn{
+  position:absolute;bottom:18px;right:20px;z-index:20;
+  display:none;/* shown via JS when video slide is active */
+  align-items:center;gap:6px;
+  background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.3);
+  color:#fff;padding:5px 12px;border-radius:20px;
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;font-family:'Source Sans 3',sans-serif;
+  transition:background .2s;
+}
+.hero-mute-btn:hover{background:rgba(0,0,0,.65)}
+.hero-mute-btn svg{width:13px;height:13px;fill:white;flex-shrink:0}
+
+/* Buttons (kept for other sections) */
 .btn-primary{background:var(--teal);color:var(--white);padding:11px 24px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-block}
 .btn-primary:hover{background:var(--teal-dark)}
 .btn-outline-w{border:2px solid rgba(255,255,255,.45);color:var(--white);padding:10px 20px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
@@ -249,9 +300,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 
 /* RESPONSIVE */
 @media(max-width:1000px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .hero-left{padding:28px 24px}
+  .hero{height:280px}
   .projects-grid,.mvg-grid{grid-template-columns:1fr 1fr}
   .two-col,.service-panel.active{grid-template-columns:1fr;gap:40px}
   .metrics-grid{grid-template-columns:1fr 1fr}
@@ -262,12 +311,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   .util-bar,.hipaa-bar{padding-left:24px;padding-right:24px}
 }
 @media(max-width:640px){
+  .hero{height:220px}
   .projects-grid,.mvg-grid{grid-template-columns:1fr}
   .metrics-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .nav-links{display:none}
-  .hero h1{font-size:22px}
-  .hero-left{padding:24px 20px}
 }
 </style>
 </head>
@@ -303,22 +351,64 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   </ul>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-left">
-    <div class="hero-eyebrow">Medical Virtual Assistant &middot; HIPAA Compliant</div>
-    <h1>Reclaim Your Time.<br>Elevate Your Practice.</h1>
-    <p class="hero-desc">With 5+ years of healthcare operations experience, I help providers streamline administration, maximise revenue, and deliver exceptional patient care &mdash; remotely and reliably.</p>
-    <div class="hero-actions">
-      <a href="https://calendly.com/mbesad6" target="_blank" class="btn-primary">Book Free Consultation</a>
-      <a href="#" class="btn-outline-w" onclick="openVideo(event)">
-        <svg class="play-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.15)"/><polygon points="10,8 16,12 10,16" fill="white"/></svg>
-        Watch Introduction
-      </a>
-    </div>
+<!-- HERO SLIDESHOW -->
+<div class="hero" id="heroSlider">
+
+  <!-- Slide 1 — image -->
+  <div class="hero-slide hero-slide-img active"
+       style="background-image:url('images/Gemini_Generated_Image_q8i12bq8i12bq8i1.png')">
   </div>
+
+  <!-- Slide 2 — image -->
+  <div class="hero-slide hero-slide-img"
+       style="background-image:url('images/Gemini_Generated_Image_n2mbcvn2mbcvn2mb.png')">
+  </div>
+
+  <!-- Slide 3 — image -->
+  <div class="hero-slide hero-slide-img"
+       style="background-image:url('images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png')">
+  </div>
+
+  <!-- Slide 4 — intro video -->
+  <div class="hero-slide hero-slide-video" id="heroVideoSlide">
+    <!--
+      Replace the src below with your actual video file path or a hosted URL.
+      Example: src="videos/intro.mp4"  or  src="WhatsApp Video 2026-03-20 at 11.44.24.mp4"
+    -->
+    <video id="heroVideo" muted playsinline preload="auto" loop
+           src="WhatsApp Video 2026-03-20 at 11.44.24.mp4">
+    </video>
+  </div>
+
+  <!-- Overlay & pattern above all slides -->
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+
+  <!-- Slide counter -->
+  <div class="hero-counter" id="heroCounter">1 / 4</div>
+
+  <!-- Dot navigation -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="hero-dot"        data-slide="1" aria-label="Slide 2"></button>
+    <button class="hero-dot"        data-slide="2" aria-label="Slide 3"></button>
+    <button class="hero-dot"        data-slide="3" aria-label="Video"></button>
+  </div>
+
+  <!-- Mute toggle (visible only on video slide) -->
+  <button class="hero-mute-btn" id="heroMuteBtn" onclick="toggleHeroMute()">
+    <svg id="heroMuteIcon" viewBox="0 0 24 24">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <line x1="23" y1="9" x2="17" y2="15" stroke="white" stroke-width="2"/>
+      <line x1="17" y1="9" x2="23" y2="15" stroke="white" stroke-width="2"/>
+    </svg>
+    <svg id="heroUnmuteIcon" viewBox="0 0 24 24" style="display:none">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+    <span id="heroMuteLabel">Unmute</span>
+  </button>
+
 </div>
 
 <!-- VIDEO MODAL -->
@@ -349,7 +439,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item"><span class="stat-num">95%+</span><span class="stat-lbl">Claim Approval Rate</span></div>
-    <div class="stat-item"><span class="stat-num">90%</span><span class="stat-lbl">No-Show Reduction</span></div>
+    <div class="stat-item"><span class="stat-num">35%</span><span class="stat-lbl">No-Show Reduction</span></div>
     <div class="stat-item"><span class="stat-num">99%</span><span class="stat-lbl">Data Accuracy</span></div>
     <div class="stat-item"><span class="stat-num">98%</span><span class="stat-lbl">Telehealth Success Rate</span></div>
   </div>
@@ -369,10 +459,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
       <div class="about-visual">
         <div class="about-visual-bg"></div>
         <div class="about-visual-overlay"></div>
-        <div class="about-placeholder-note">images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png<br>images/about/working.jpg &mdash; 600&times;500px</div>
+        <div class="about-placeholder-note">📷 Add your working photo here<br>images/about/working.jpg &mdash; 600&times;500px</div>
         <div class="about-visual-content">
           <div class="about-quote">&ldquo;In a clinical setting, accuracy is synonymous with patient safety.&rdquo;</div>
-          <div class="about-quote-attr">&mdash; Derrick Mbesa, Medical virtual Assistant | Administrative Assistant</div>
+          <div class="about-quote-attr">&mdash; MVA Precious Madu, Medical VA Expert</div>
         </div>
       </div>
     </div>
@@ -382,24 +472,27 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 <!-- MISSION / VISION / GOAL -->
 <section id="mission" class="alt">
   <div class="section-inner">
+    <div class="section-label">What Drives Me</div>
     <h2 class="section-heading">Mission, vision &amp; goal</h2>
+    <p class="section-body">Every service I provide is rooted in a clear sense of purpose &mdash; to make healthcare administration seamless so providers can focus entirely on their patients.</p>
+    <div class="mvg-grid">
       <div class="mvg-card mission">
         <div class="mvg-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21"/><line x1="3" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="21" y2="12"/></svg></div>
         <div class="mvg-label">Mission</div>
         <div class="mvg-title">Empowering providers to focus on what matters most</div>
-        <p class="mvg-text">To eliminate the administrative burden preventing healthcare providers from delivering quality patient care. By handling the back-office operations with accuracy and full compliance, I give providers back the time and mental clarity to heal, lead, and grow their practices.</p>
+        <p class="mvg-text">To eliminate the administrative burden preventing healthcare providers from delivering exceptional patient care. By handling complex back-office operations with precision and full compliance, I give clinicians back the time and mental clarity to heal, lead, and grow their practices.</p>
       </div>
       <div class="mvg-card vision">
         <div class="mvg-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <div class="mvg-label">Vision</div>
         <div class="mvg-title">A world where no provider drowns in paperwork</div>
-        <p class="mvg-text">A future where every healthcare practice has access to expert administrative support that is reliable, HIPAA-compliant, and results-driven. Technology and human expertise working together to build healthier, more efficient healthcare systems globally.</p>
+        <p class="mvg-text">A future where every healthcare practice &mdash; from solo practitioners to multi-provider clinics &mdash; has access to expert administrative support that is reliable, HIPAA-compliant, and results-driven. Technology and human expertise working together to build healthier, more efficient healthcare systems globally.</p>
       </div>
       <div class="mvg-card goal">
         <div class="mvg-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <div class="mvg-label">Goal</div>
         <div class="mvg-title">Measurable improvement in every engagement</div>
-        <p class="mvg-text">To deliver quantifiable, lasting results in every partnership whether a 90% reduction in claim denials, a 90% drop in patient no-shows, or 99% clinical documentation accuracy. I do not complete tasks; I optimise systems so that practices continue to benefit long after each engagement ends.</p>
+        <p class="mvg-text">To deliver quantifiable, lasting results in every partnership &mdash; whether that is a 30% reduction in claim denials, a 35% drop in patient no-shows, or 40% faster clinical documentation. I don&rsquo;t just complete tasks; I optimise systems so that practices continue to benefit long after each engagement ends.</p>
       </div>
     </div>
   </div>
@@ -410,7 +503,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   <div class="section-inner">
     <div class="section-label">What I Do</div>
     <h2 class="section-heading">Comprehensive medical virtual assistance</h2>
-    <p class="section-body"> Administrative and clinical support that lets you focus entirely on patient care.</p>
+    <p class="section-body">End-to-end administrative and clinical support that lets you focus entirely on patient care.</p>
     <div class="services-nav">
       <button class="service-tab active" onclick="showService(0,this)">Scheduling</button>
       <button class="service-tab" onclick="showService(1,this)">Medical Coding</button>
@@ -806,6 +899,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 </footer>
 
 <script>
+/* ── SMOOTH SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
@@ -813,12 +907,82 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   })
 });
 
+/* ── HERO SLIDESHOW ── */
+const heroSlides   = document.querySelectorAll('.hero-slide');
+const heroDots     = document.querySelectorAll('.hero-dot');
+const heroCounter  = document.getElementById('heroCounter');
+const heroVideo    = document.getElementById('heroVideo');
+const heroMuteBtn  = document.getElementById('heroMuteBtn');
+const heroVideoSlide = document.getElementById('heroVideoSlide');
+let heroCurrent = 0;
+let heroTimer   = null;
+
+function goToSlide(idx) {
+  // deactivate current
+  heroSlides[heroCurrentactual()].classList.remove('active');
+  heroDots[heroCurrentactual()].classList.remove('active');
+
+  heroCurrent = idx;
+
+  // activate new
+  heroSlides[heroCurrent].classList.add('active');
+  heroDots[heroCurrent].classList.add('active');
+  heroCounter.textContent = (heroCurrent + 1) + ' / ' + heroSlides.length;
+
+  // handle video slide
+  const isVideo = heroSlides[heroCurrent].classList.contains('hero-slide-video');
+  heroMuteBtn.style.display = isVideo ? 'flex' : 'none';
+
+  if (isVideo) {
+    heroVideo.play().catch(()=>{});
+  } else {
+    heroVideo.pause();
+  }
+}
+
+// helper so we always have correct index
+function heroCurrentactual() {
+  for (let i = 0; i < heroSlides.length; i++) {
+    if (heroSlides[i].classList.contains('active')) return i;
+  }
+  return 0;
+}
+
+function nextSlide() {
+  goToSlide((heroCurrentactual() + 1) % heroSlides.length);
+}
+
+function startTimer() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(nextSlide, 5000);
+}
+
+// Dot clicks
+heroDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    goToSlide(parseInt(dot.dataset.slide));
+    startTimer(); // reset timer on manual click
+  });
+});
+
+// Mute toggle
+function toggleHeroMute() {
+  heroVideo.muted = !heroVideo.muted;
+  document.getElementById('heroMuteIcon').style.display   = heroVideo.muted ? 'block' : 'none';
+  document.getElementById('heroUnmuteIcon').style.display = heroVideo.muted ? 'none'  : 'block';
+  document.getElementById('heroMuteLabel').textContent    = heroVideo.muted ? 'Unmute' : 'Mute';
+}
+
+startTimer();
+
+/* ── SERVICE TABS ── */
 function showService(idx,btn){
   document.querySelectorAll('.service-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
   document.querySelectorAll('.service-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
 }
 
+/* ── CREDENTIAL TABS ── */
 function showCredTab(id,btn){
   document.querySelectorAll('.cred-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.cred-tab').forEach(t=>t.classList.remove('active'));
@@ -826,6 +990,7 @@ function showCredTab(id,btn){
   btn.classList.add('active');
 }
 
+/* ── VIDEO MODAL (Watch Introduction button in About section) ── */
 function openVideo(e){
   e.preventDefault();
   const modal=document.getElementById('videoModal');
