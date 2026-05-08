@@ -36,22 +36,40 @@ nav{background:var(--white);padding:0 48px;display:flex;justify-content:space-be
 .nav-cta{background:var(--teal)!important;color:var(--white)!important;padding:10px 22px;border-radius:3px;font-size:12px!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.06em!important;text-decoration:none!important;transition:background .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--teal-dark)!important}
 
-/* HERO */
-.hero{position:relative;background:var(--navy);display:grid;grid-template-columns:1fr 120px;min-height:280px;overflow:hidden}
+/* ── HERO (reduced) ── */
+.hero{
+  position:relative;background:var(--navy);
+  display:grid;grid-template-columns:1fr 120px;
+  min-height:160px;          /* was 280px */
+  overflow:hidden;
+}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,46,68,.98) 0%,rgba(26,46,68,.88) 45%,rgba(20,60,48,.65) 100%);z-index:1}
 .hero-pattern{position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:32px 32px;z-index:0}
-.hero-left{position:relative;z-index:2;padding:80px 48px 80px 48px;display:flex;flex-direction:column;justify-content:center}
-.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.hero-eyebrow::before{content:'';width:40px;height:2px;background:var(--gold);display:block}
-.hero h1{font-family:'Merriweather',serif;font-size:40px;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:20px}
-.hero-desc{font-size:17px;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:32px;max-width:520px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.btn-primary{background:var(--teal);color:var(--white);padding:13px 28px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-block}
+.hero-left{
+  position:relative;z-index:2;
+  padding:36px 48px;         /* was 80px 48px 80px 48px */
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;   /* was 20px */
+  display:flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);display:block}  /* was 40px */
+.hero h1{
+  font-family:'Merriweather',serif;font-size:28px;  /* was 40px */
+  font-weight:700;color:var(--white);line-height:1.25;margin-bottom:14px; /* was 20px */
+}
+.hero-desc{
+  font-size:15px;color:rgba(255,255,255,.78);  /* was 17px */
+  line-height:1.65;margin-bottom:24px;max-width:520px; /* was 32px */
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:var(--white);padding:11px 24px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-block}
 .btn-primary:hover{background:var(--teal-dark)}
-.btn-outline-w{border:2px solid rgba(255,255,255,.45);color:var(--white);padding:12px 24px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline-w{border:2px solid rgba(255,255,255,.45);color:var(--white);padding:10px 20px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
 .btn-outline-w:hover{background:rgba(255,255,255,.1);border-color:#fff}
-.play-icon{width:18px;height:18px;fill:var(--white);flex-shrink:0}
-
+.play-icon{width:16px;height:16px;fill:var(--white);flex-shrink:0}
 
 /* COMPLIANCE + STATS */
 .hipaa-bar{background:var(--teal-light);border-bottom:1px solid rgba(46,139,110,.2);padding:10px 48px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap}
@@ -233,7 +251,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 @media(max-width:1000px){
   .hero{grid-template-columns:1fr}
   .hero-right{display:none}
-  .hero-left{padding:60px 24px}
+  .hero-left{padding:28px 24px}
   .projects-grid,.mvg-grid{grid-template-columns:1fr 1fr}
   .two-col,.service-panel.active{grid-template-columns:1fr;gap:40px}
   .metrics-grid{grid-template-columns:1fr 1fr}
@@ -248,7 +266,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   .metrics-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .nav-links{display:none}
-  .hero h1{font-size:28px}
+  .hero h1{font-size:22px}
+  .hero-left{padding:24px 20px}
 }
 </style>
 </head>
@@ -270,11 +289,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <!--
-      IMAGE SPOT 1 — Nav headshot (42×42px circle)
-      Replace the .nav-initials div with:
-      <img src="images/profile/avatar.jpg" alt="Derrick Mbesa" class="nav-avatar">
-    -->
     <div class="nav-initials">DM</div>
     <div class="nav-logo-text">Derrick Mbesa<span class="nav-logo-sub">Medical Virtual Assistant</span></div>
   </a>
@@ -296,35 +310,21 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   <div class="hero-left">
     <div class="hero-eyebrow">Medical Virtual Assistant &middot; HIPAA Compliant</div>
     <h1>Reclaim Your Time.<br>Elevate Your Practice.</h1>
-    <p class="hero-desc">With 5+ years of healthcare operations experience, I help providers streamline administration, maximize revenue, and deliver exceptional patient care &mdash; remotely and reliably.</p>
+    <p class="hero-desc">With 5+ years of healthcare operations experience, I help providers streamline administration, maximise revenue, and deliver exceptional patient care &mdash; remotely and reliably.</p>
     <div class="hero-actions">
       <a href="https://calendly.com/mbesad6" target="_blank" class="btn-primary">Book Free Consultation</a>
-      <!-- VIDEO TRIGGER — clicking this opens the inline video modal below -->
       <a href="#" class="btn-outline-w" onclick="openVideo(event)">
         <svg class="play-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.15)"/><polygon points="10,8 16,12 10,16" fill="white"/></svg>
         Watch Introduction
       </a>
     </div>
   </div>
+</div>
 
-<!--
-  VIDEO MODAL
-  ══════════════════════════════════════════════════════════
-  TO ADD YOUR VIDEO — replace the iframe src with your link:
-
-  YOUTUBE:  src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1"
-  VIMEO:    src="https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1"
-  MP4 FILE: remove the iframe, use instead:
-            <video src="images/intro.mp4" controls autoplay></video>
-
-  To get your YouTube embed ID: open your video on YouTube,
-  click Share → Embed, and copy the ID after /embed/
-  ══════════════════════════════════════════════════════════
--->
+<!-- VIDEO MODAL -->
 <div class="video-modal-overlay" id="videoModal" onclick="closeVideoOutside(event)">
   <div class="video-modal" id="videoModalInner">
     <button class="video-close" onclick="closeVideo()">&times;</button>
-    <!-- REPLACE src below with your actual video embed URL -->
     <iframe
       id="videoFrame"
       src=""
@@ -367,12 +367,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
         <a href="#mission" class="learn-more">My mission &amp; vision</a>
       </div>
       <div class="about-visual">
-        <!--
-          IMAGE SPOT 4 — About section working photo (600×500px)
-          Replace the two divs below with:
-          <img src="images/about/working.jpg" alt="Derrick at work" class="about-photo">
-          Then keep .about-visual-overlay and .about-visual-content
-        -->
         <div class="about-visual-bg"></div>
         <div class="about-visual-overlay"></div>
         <div class="about-placeholder-note">📷 Add your working photo here<br>images/about/working.jpg &mdash; 600&times;500px</div>
@@ -429,7 +423,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
       <button class="service-tab" onclick="showService(5,this)">Telehealth</button>
     </div>
     <div class="service-panels">
-      <!-- Panel 0 -->
       <div class="service-panel active">
         <div class="sp-left">
           <div class="sp-num">01</div>
@@ -445,7 +438,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
             <li>After-hours scheduling support</li>
           </ul></div>
         </div>
-        <div class="sp-right"><h4 class="sp-includes" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:16px">Key metrics</h4>
+        <div class="sp-right"><h4 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:16px">Key metrics</h4>
           <div class="sp-metric-row">
             <div class="sp-metric"><div class="sp-metric-val">35%</div><div class="sp-metric-label">Reduction in patient no-shows</div><div class="sp-metric-note">↑ Revenue per clinic day</div></div>
             <div class="sp-metric"><div class="sp-metric-val">0</div><div class="sp-metric-label">Double-bookings since implementation</div><div class="sp-metric-note">Improved provider satisfaction</div></div>
@@ -453,7 +446,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
           </div>
         </div>
       </div>
-      <!-- Panel 1 -->
       <div class="service-panel">
         <div class="sp-left">
           <div class="sp-num">02</div>
@@ -477,7 +469,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
           </div>
         </div>
       </div>
-      <!-- Panel 2 -->
       <div class="service-panel">
         <div class="sp-left">
           <div class="sp-num">03</div>
@@ -501,7 +492,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
           </div>
         </div>
       </div>
-      <!-- Panel 3 -->
       <div class="service-panel">
         <div class="sp-left">
           <div class="sp-num">04</div>
@@ -525,7 +515,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
           </div>
         </div>
       </div>
-      <!-- Panel 4 -->
       <div class="service-panel">
         <div class="sp-left">
           <div class="sp-num">05</div>
@@ -549,7 +538,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
           </div>
         </div>
       </div>
-      <!-- Panel 5 -->
       <div class="service-panel">
         <div class="sp-left">
           <div class="sp-num">06</div>
@@ -612,11 +600,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 <!-- TESTIMONIAL -->
 <div class="testimonial-wrap">
   <div class="testimonial-block">
-    <!--
-      IMAGE SPOT 6 — Testimonial photo (80×80px)
-      Replace div below with (with permission):
-      <img src="images/testimonials/precious-madu.jpg" alt="MVA Precious Madu" class="testimonial-avatar">
-    -->
     <div class="testimonial-initials">PM</div>
     <div class="testimonial-body">
       <div class="testimonial-text">&ldquo;After seeing Derrick in action, I am fully confident in his technical capabilities. He demonstrated mastery of the EHR environment, navigating complex interfaces with precision. What sets Derrick apart is his attention to detail in transcribing accurate SOAP notes, ensuring ICD-10 codes match the diagnosis, or performing chart audits. He understands that in a clinical setting, accuracy is synonymous with patient safety. Any practice looking for technical excellence would be lucky to partner with him.&rdquo;</div>
@@ -675,148 +658,85 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
     <div class="section-label">Portfolio</div>
     <h2 class="section-heading">Featured work &amp; project highlights</h2>
     <p class="section-body">Real healthcare challenges. Documented results. Each project showcases a specific service area with measurable outcomes.</p>
-
-    <!--
-      HOW TO ADD YOUR PROJECT IMAGES & DRIVE LINKS:
-      ─────────────────────────────────────────────
-      1. IMAGES: Replace each .project-thumb-placeholder div with:
-         <img src="images/projects/billing.jpg" alt="..." class="project-thumb">
-         Recommended: 600×360px JPG. Save in images/projects/ folder.
-
-      2. GOOGLE DRIVE LINKS: Replace YOUR_DRIVE_LINK_X in each .btn-drive
-         with the actual shared Google Drive link for that project.
-         Make sure sharing is set to "Anyone with the link can view".
-      ─────────────────────────────────────────────
-    -->
-
     <div class="projects-grid">
-
-      <!-- PROJECT 1 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/billing.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/billing.jpg</span></div>
         <div class="project-body">
           <div class="project-category">Revenue Cycle Management</div>
           <div class="project-title">Revenue Recovery: Multi-Provider Billing Overhaul</div>
           <div class="project-desc">Rebuilt the entire claims workflow for a multi-provider practice — from ICD-10 coding through submission and denial management, resulting in significantly improved first-pass approval rates and reduced revenue leakage.</div>
           <div class="project-metric">95%+ first-pass approval &middot; 30% denial reduction</div>
           <div class="project-actions">
-            <a href="https://drive.google.com/file/d/1S4x6WoNcSEGWWVQaVQdQvufPMeLjBTEe/view?usp=drive_link" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="https://drive.google.com/file/d/1S4x6WoNcSEGWWVQaVQdQvufPMeLjBTEe/view?usp=drive_link" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
-      <!-- PROJECT 2 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/ehr.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/ehr.jpg</span></div>
         <div class="project-body">
           <div class="project-category">EHR &amp; Clinical Documentation</div>
           <div class="project-title">EHR Workflow Redesign &amp; Documentation Efficiency</div>
           <div class="project-desc">Audited and restructured EHR workflows across a mental health practice — correcting data inconsistencies, creating SOAP note templates, and implementing provider-specific documentation shortcuts that saved hours per week.</div>
           <div class="project-metric">99% data accuracy &middot; 40% faster documentation</div>
           <div class="project-actions">
-            <a href="https://drive.google.com/drive/folders/1tDnSGe64DLyeCEnmdfPDOm-Win1vZ7eq?usp=drive_link" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="https://drive.google.com/drive/folders/1tDnSGe64DLyeCEnmdfPDOm-Win1vZ7eq?usp=drive_link" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
-      <!-- PROJECT 3 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/scheduling.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/scheduling.jpg</span></div>
         <div class="project-body">
           <div class="project-category">Patient Scheduling Operations</div>
           <div class="project-title">Patient Scheduling Transformation &amp; No-Show Reduction</div>
           <div class="project-desc">Redesigned scheduling protocols for a busy outpatient clinic — implementing automated reminder sequences, optimised slot management, and a waitlist system that increased appointment fill rates and reduced no-shows by 35%.</div>
           <div class="project-metric">Zero double-bookings &middot; 35% no-show reduction</div>
           <div class="project-actions">
-            <a href="https://drive.google.com/file/d/1l4jIcQddzaa0R91kTFrCsNPrph1Pix83/view?usp=drive_link" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="https://drive.google.com/file/d/1l4jIcQddzaa0R91kTFrCsNPrph1Pix83/view?usp=drive_link" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
-      <!-- PROJECT 4 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/insurance.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/insurance.jpg</span></div>
         <div class="project-body">
           <div class="project-category">Insurance &amp; Prior Authorization</div>
           <div class="project-title">Prior Authorization &amp; Insurance Verification System</div>
           <div class="project-desc">Built a proactive verification workflow from scratch for a specialist clinic &mdash; moving from reactive to preventive insurance management, slashing authorization turnaround from 7 days to 2&ndash;3 days and dramatically reducing denied claims.</div>
           <div class="project-metric">85% pre-verification rate &middot; 2&ndash;3 day turnaround</div>
           <div class="project-actions">
-            <a href="https://drive.google.com/drive/folders/1pA9gRzm-ORMBZUvmbpuPY17VYhAoIsWi?usp=sharing" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="https://drive.google.com/drive/folders/1pA9gRzm-ORMBZUvmbpuPY17VYhAoIsWi?usp=sharing" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
-      <!-- PROJECT 5 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/telehealth.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/telehealth.jpg</span></div>
         <div class="project-body">
           <div class="project-category">Virtual Care Operations</div>
           <div class="project-title">Virtual Care Operations Setup &amp; Management</div>
           <div class="project-desc">End-to-end setup and ongoing management of a telehealth programme for a primary care practice &mdash; platform configuration, patient onboarding, technical support, and post-visit documentation achieving a 98% session success rate.</div>
           <div class="project-metric">98% session success &middot; 25+ weekly sessions</div>
           <div class="project-actions">
-            <a href="YOUR_DRIVE_LINK_5" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="YOUR_DRIVE_LINK_5" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
-      <!-- PROJECT 6 -->
       <div class="project-card">
-        <div class="project-thumb-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Replace with: images/projects/scribing.jpg</span>
-        </div>
+        <div class="project-thumb-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c0c0b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>images/projects/scribing.jpg</span></div>
         <div class="project-body">
           <div class="project-category">Clinical Documentation</div>
           <div class="project-title">Clinical Documentation Excellence Programme</div>
           <div class="project-desc">Delivered high-volume medical scribing for a therapy practice &mdash; transcribing 50+ SOAP notes per month with 100% accuracy, zero HIPAA incidents, and same-session turnaround that allowed providers to leave the office with fully complete charts every day.</div>
           <div class="project-metric">100% accuracy &middot; 50+ notes/month</div>
           <div class="project-actions">
-            <a href="YOUR_DRIVE_LINK_6" target="_blank" class="btn-drive">
-              <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-              View on Drive
-            </a>
+            <a href="YOUR_DRIVE_LINK_6" target="_blank" class="btn-drive"><svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>View on Drive</a>
             <a href="#" class="btn-details">Details</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -845,7 +765,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
       <div class="social-links">
         <a href="https://linkedin.com/in/dedrrick-mbesa" target="_blank" class="social-link" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
         <a href="https://github.com/Mbesad123" target="_blank" class="social-link" title="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
-        <a href="https://wa.me/YOUR-NUMBER" target="_blank" class="social-link" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+        <a href="https://wa.me/+254702969716" target="_blank" class="social-link" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
         <a href="mailto:mbesad6@gmail.com" class="social-link" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
       </div>
     </div>
@@ -889,7 +809,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 </footer>
 
 <script>
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
@@ -897,18 +816,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   })
 });
 
-// Carousel loop
-const track=document.getElementById('carouselTrack');
-if(track){Array.from(track.children).forEach(item=>track.appendChild(item.cloneNode(true)))}
-
-// Service tabs
 function showService(idx,btn){
   document.querySelectorAll('.service-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
   document.querySelectorAll('.service-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
 }
 
-// Credential tabs
 function showCredTab(id,btn){
   document.querySelectorAll('.cred-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.cred-tab').forEach(t=>t.classList.remove('active'));
@@ -916,12 +829,11 @@ function showCredTab(id,btn){
   btn.classList.add('active');
 }
 
-// Video modal — loads src only when opened so it doesn't autoplay on page load
 function openVideo(e){
   e.preventDefault();
   const modal=document.getElementById('videoModal');
   const frame=document.getElementById('videoFrame');
-  frame.src=frame.dataset.src; // activate the video
+  frame.src=frame.dataset.src;
   modal.classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -929,7 +841,7 @@ function closeVideo(){
   const modal=document.getElementById('videoModal');
   const frame=document.getElementById('videoFrame');
   modal.classList.remove('open');
-  frame.src=''; // stop the video
+  frame.src='';
   document.body.style.overflow='';
 }
 function closeVideoOutside(e){
