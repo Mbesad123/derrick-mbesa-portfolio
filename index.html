@@ -39,7 +39,10 @@ nav{background:var(--white);padding:0 48px;display:flex;justify-content:space-be
 /* ── HERO SLIDESHOW ── */
 .hero{
   position:relative;
-  width:100%;height:420px;
+  width:100%;
+  height:75vh;
+  min-height:480px;
+  max-height:700px;
   background:var(--navy);
   overflow:hidden;
 }
@@ -148,7 +151,7 @@ section.alt{background:var(--light-bg)}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .about-visual{position:relative;border-radius:6px;overflow:hidden;min-height:460px}
 .about-visual-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--navy) 0%,#2e5e4a 100%)}
-.about-visual-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,46,68,.92) 0%,transparent 55%)}
+.about-visual-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,35,0.97) 0%,rgba(10,20,35,0.5) 45%,transparent 70%)}
 .about-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .about-placeholder-note{position:absolute;top:36%;left:50%;transform:translate(-50%,-50%);font-size:11px;color:rgba(255,255,255,.25);text-align:center;line-height:1.8;padding:0 24px}
 .about-visual-content{position:absolute;bottom:0;left:0;right:0;padding:32px;z-index:2}
@@ -300,7 +303,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 
 /* RESPONSIVE */
 @media(max-width:1000px){
-  .hero{height:280px}
+  .hero{height:55vh;min-height:320px}
   .projects-grid,.mvg-grid{grid-template-columns:1fr 1fr}
   .two-col,.service-panel.active{grid-template-columns:1fr;gap:40px}
   .metrics-grid{grid-template-columns:1fr 1fr}
@@ -311,7 +314,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
   .util-bar,.hipaa-bar{padding-left:24px;padding-right:24px}
 }
 @media(max-width:640px){
-  .hero{height:220px}
+  .hero{height:45vh;min-height:260px}
   .projects-grid,.mvg-grid{grid-template-columns:1fr}
   .metrics-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
@@ -376,7 +379,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
       Example: src="videos/intro.mp4"  or  src="WhatsApp Video 2026-03-20 at 11.44.24.mp4"
     -->
     <video id="heroVideo" muted playsinline preload="auto" loop
-           src="WhatsApp Video 2026-03-20 at 11.44.24.mp4">
+           src="WhatsApp%20Video%202026-03-20%20at%2011.44.24.mp4">
     </video>
   </div>
 
