@@ -63,7 +63,14 @@ nav{background:var(--white);padding:0 48px;display:flex;justify-content:space-be
   background-position:center center;
   background-repeat:no-repeat;
 }
-
+.hero-slide-bg-img{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+  
 /* Video slide */
 .hero-slide-video{background:#000}
 .hero-slide-video video{
@@ -358,19 +365,22 @@ footer{background:var(--navy);color:rgba(255,255,255,.6);padding:64px 48px 36px}
 <div class="hero" id="heroSlider">
 
   <!-- Slide 1 — image -->
-  <div class="hero-slide hero-slide-img active"
-       style="background-image:url('images/Gemini_Generated_Image_q8i12bq8i12bq8i1.png')">
-  </div>
+<div class="hero-slide hero-slide-img active">
+  <img src="images/Gemini_Generated_Image_q8i12bq8i12bq8i1.png" 
+       alt="Hero slide 1" class="hero-slide-bg-img">
+</div>
 
   <!-- Slide 2 — image -->
-  <div class="hero-slide hero-slide-img"
-       style="background-image:url('images/Gemini_Generated_Image_n2mbcvn2mbcvn2mb.png')">
-  </div>
+<div class="hero-slide hero-slide-img">
+  <img src="images/Gemini_Generated_Image_n2mbcvn2mbcvn2mb.png" 
+       alt="Hero slide 2" class="hero-slide-bg-img">
+</div>
 
   <!-- Slide 3 — image -->
-  <div class="hero-slide hero-slide-img"
-       style="background-image:url('images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png')">
-  </div>
+<div class="hero-slide hero-slide-img">
+  <img src="images/Gemini_Generated_Image_i9o3t4i9o3t4i9o3.png" 
+       alt="Hero slide 3" class="hero-slide-bg-img">
+</div>
 
   <!-- Slide 4 — intro video -->
   <div class="hero-slide hero-slide-video" id="heroVideoSlide">
